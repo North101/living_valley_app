@@ -1,0 +1,223 @@
+name: living_valley_app
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.0-000.0.beta
+
+dependencies:
+  collection: ^1.19.1
+  flutter:
+    sdk: flutter
+  flutter_html: ^3.0.0
+  flutter_riverpod: ^3.0.3
+  freezed_annotation: ^3.1.0
+  html: ^0.15.6
+  json_annotation: ^4.9.0
+  riverpod_annotation: ^3.0.3
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  build_runner: ^2.9.0
+  custom_lint: ^0.8.1
+  flutter_gen_runner: ^5.12.0
+  flutter_lints: ^6.0.0
+  freezed: ^3.2.3
+  json_serializable: ^6.11.1
+  package_rename: ^1.10.0
+  riverpod_generator: ^3.0.3
+  riverpod_lint: ^3.0.3
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/data.json
+
+    - assets/data/
+  
+    - assets/data/campaign_guides/
+
+    - assets/data/campaign_guides/lure_of_the_valley/
+    - assets/data/campaign_guides/lure_of_the_valley/1_missions/
+    - assets/data/campaign_guides/lure_of_the_valley/3_white_sky/
+    - assets/data/campaign_guides/lure_of_the_valley/4_northern_outpost/
+    - assets/data/campaign_guides/lure_of_the_valley/8_meadow/
+    - assets/data/campaign_guides/lure_of_the_valley/9_marsh_of_rebirth/
+    - assets/data/campaign_guides/lure_of_the_valley/12_golden_shore/
+    - assets/data/campaign_guides/lure_of_the_valley/16_kobos_market/
+    - assets/data/campaign_guides/lure_of_the_valley/17_the_philosophers_garden/
+    - assets/data/campaign_guides/lure_of_the_valley/18_the_high_basin/
+    - assets/data/campaign_guides/lure_of_the_valley/19_the_plummet/
+    - assets/data/campaign_guides/lure_of_the_valley/23_headwaters_station/
+    - assets/data/campaign_guides/lure_of_the_valley/24_greenbriar_knoll/
+    - assets/data/campaign_guides/lure_of_the_valley/28_terravore/
+    - assets/data/campaign_guides/lure_of_the_valley/30_michaels_bog/
+    - assets/data/campaign_guides/lure_of_the_valley/34_archaeological_outpost/
+    - assets/data/campaign_guides/lure_of_the_valley/39_a_trick_of_the_light/
+    - assets/data/campaign_guides/lure_of_the_valley/41_lunn_outpost_tender/
+    - assets/data/campaign_guides/lure_of_the_valley/42_topside_mast/
+    - assets/data/campaign_guides/lure_of_the_valley/44_kordo_ranger_veteran/
+    - assets/data/campaign_guides/lure_of_the_valley/45_spirit_speaker_nal/
+    - assets/data/campaign_guides/lure_of_the_valley/47_hy_pimpot_chef/
+    - assets/data/campaign_guides/lure_of_the_valley/48_ar_tel_angler/
+    - assets/data/campaign_guides/lure_of_the_valley/49_vira_lake_guide/
+    - assets/data/campaign_guides/lure_of_the_valley/50_the_bubble/
+    - assets/data/campaign_guides/lure_of_the_valley/51_elder_murtok_gral/
+    - assets/data/campaign_guides/lure_of_the_valley/53_silaro_mako_archaeologist/
+    - assets/data/campaign_guides/lure_of_the_valley/58_arcology_threshold/
+    - assets/data/campaign_guides/lure_of_the_valley/59_dace_ambitious_shaper/
+    - assets/data/campaign_guides/lure_of_the_valley/60_elder_mora_orlin/
+    - assets/data/campaign_guides/lure_of_the_valley/61_tollin_lang_sculptor/
+    - assets/data/campaign_guides/lure_of_the_valley/64_seilo_griss_apiarist/
+    - assets/data/campaign_guides/lure_of_the_valley/65_lyn_mira_woodworker/
+    - assets/data/campaign_guides/lure_of_the_valley/66_elder_tesoral_hale/
+    - assets/data/campaign_guides/lure_of_the_valley/67_dancers_round/
+    - assets/data/campaign_guides/lure_of_the_valley/68_trained_stilt_horse/
+    - assets/data/campaign_guides/lure_of_the_valley/69_elder_jular_abel/
+    - assets/data/campaign_guides/lure_of_the_valley/70_jaris_willful_youth/
+    - assets/data/campaign_guides/lure_of_the_valley/71_ol_bloody_clicker/
+    - assets/data/campaign_guides/lure_of_the_valley/72_the_roiling/
+    - assets/data/campaign_guides/lure_of_the_valley/74_aell_ambitious_shaper/
+    - assets/data/campaign_guides/lure_of_the_valley/76_kasende_expert_hunter/
+    - assets/data/campaign_guides/lure_of_the_valley/77_elder_cormak_wellers/
+    - assets/data/campaign_guides/lure_of_the_valley/78_arcology_sinkhole/
+    - assets/data/campaign_guides/lure_of_the_valley/80_quisi_vos_rascal/
+    - assets/data/campaign_guides/lure_of_the_valley/81_oura_vos_traveler/
+    - assets/data/campaign_guides/lure_of_the_valley/82_sil_belai_artist/
+    - assets/data/campaign_guides/lure_of_the_valley/83_ren_kobo_merchant/
+    - assets/data/campaign_guides/lure_of_the_valley/84_tala_the_red_exile/
+    - assets/data/campaign_guides/lure_of_the_valley/85_calypsa_ranger_mentor/
+    - assets/data/campaign_guides/lure_of_the_valley/86_the_fundamentalist/
+    - assets/data/campaign_guides/lure_of_the_valley/87_ben_amon_swift_pilot/
+    - assets/data/campaign_guides/lure_of_the_valley/90_mysterious_verdessian/
+    - assets/data/campaign_guides/lure_of_the_valley/91_biscuit_delivery/
+    - assets/data/campaign_guides/lure_of_the_valley/92_deeper_motives/
+    - assets/data/campaign_guides/lure_of_the_valley/93_the_fall_of_spire/
+    - assets/data/campaign_guides/lure_of_the_valley/94_world_events/
+
+    - assets/data/campaign_guides/legacy_of_the_ancestors/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/1_missions_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/15_ancestors_grove/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/19_the_plummet/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/23_headwaters_station_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/24_greenbriar_knoll_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/25_the_concordant_ziggurats_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/42_topside_mast_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/44_kordo_ranger_veteran_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/45_spirit_speaker_nal_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/47_hy_pimpot_chef_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/56_the_carbon_forge_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/57_a_hearty_brew_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/58_arcology_threshold_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/59_dace_ambitious_shaper_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/60_elder_mora_orlin_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/61_tollin_lang_sculptor_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/78_arcology_sinkhole_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/81_oura_vos_traveler_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/83_ren_kobo_merchant_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/85_calypsa_ranger_mentor_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/86_the_fundamentalist_loa/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/102_branching_artery/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/105_arboretum_of_memory/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/106_the_verdant_sphere/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/107_the_cage/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/108_drenching_chamber/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/109_oasis_of_sunlight/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/111_cerulean_curtain/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/120_the_plinth/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/121_the_spiral_staircase/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/122_cryptic_wayfinder/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/123_lost_lutrinal/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/124_silaro_mako_spelunker/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/125_rift_in_the_artery/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/126_quisi_vos_rapscallion/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/127_harlan_vos_explorer/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/129_wild_scuttlebus/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/130_progenitor_mushroom/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/131_gardener_spirit/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/132_the_ferrymen/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/135_archivist_spirit/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/136_the_grovetender/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/138_mysterious_seed/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/139_familiar_verdessian/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/144_kal_iver_proficient_ranger/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/145_the_slumbering_foreman/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/146_flowsteel_control/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/147_mutating_galgothrop/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/148_precarious_wreckage/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/149_pitch_black_passage/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/150_fractal_frog/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/151_wanderer_spirit/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/152_a_shadow_in_the_darkness/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/153_trail_of_ooze/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/155_elevated_passage/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/156_flooded_passage/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/157_overgrown_passage/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/158_locked_passage/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/159_lunn_curious_scavenger/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/196_rattling_the_cage/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/198_data_repository/
+    - assets/data/campaign_guides/legacy_of_the_ancestors/199_world_events_loa/
+
+    - assets/data/rules_glossary/
+    - assets/data/rules_glossary/a/
+    - assets/data/rules_glossary/b/
+    - assets/data/rules_glossary/c/
+    - assets/data/rules_glossary/d/
+    - assets/data/rules_glossary/e/
+    - assets/data/rules_glossary/f/
+    - assets/data/rules_glossary/g/
+    - assets/data/rules_glossary/h/
+    - assets/data/rules_glossary/i/
+    - assets/data/rules_glossary/j/
+    - assets/data/rules_glossary/k/
+    - assets/data/rules_glossary/l/
+    - assets/data/rules_glossary/m/
+    - assets/data/rules_glossary/n/
+    - assets/data/rules_glossary/o/
+    - assets/data/rules_glossary/p/
+    - assets/data/rules_glossary/q/
+    - assets/data/rules_glossary/r/
+    - assets/data/rules_glossary/s/
+    - assets/data/rules_glossary/t/
+    - assets/data/rules_glossary/u/
+    - assets/data/rules_glossary/v/
+    - assets/data/rules_glossary/w/
+    - assets/data/rules_glossary/x/
+    - assets/data/rules_glossary/y/
+    - assets/data/rules_glossary/z/
+
+    - assets/data/one_day_missions/
+    - assets/data/one_day_missions/animal_rescue/
+    - assets/data/one_day_missions/missing_person/
+    - assets/data/one_day_missions/predatory_instincts/
+
+    - assets/data/updates/
+    - assets/data/updates/
+    - assets/data/updates/campaign_guide_errata/
+    - assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/
+    - assets/data/updates/card_errata/
+    - assets/data/updates/the_elders_book_of_uncommon_wisdom/
+  
+    - assets/icons/
+
+package_rename_config:
+  android:
+    app_name: The Living Valley
+    package_name: uk.co.north101.android.living_valley_app
+
+  ios:
+    app_name: The Living Valley
+    package_name: uk.co.north101.ios.living_valley_app
+    bundle_name: living_valley_app
+
+  macos:
+    app_name: The Living Valley
+    package_name: uk.co.north101.osx.living_valley_app
+    copyright_notice: # (String) The product copyright of the macos app
