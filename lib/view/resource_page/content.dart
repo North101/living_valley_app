@@ -6,21 +6,18 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '/gen/assets.gen.dart';
 import '/resources.dart';
-import '/util/textscaledbuilder.dart';
-import '/util/themedbuilder.dart';
+import '/view/util/textscaledbuilder.dart';
 import 'page.dart';
 
 class ResourceContentWidget extends StatefulWidget {
   const ResourceContentWidget({
     required this.resource,
     required this.anchor,
-    required this.content,
     super.key,
   });
 
   final Resource resource;
   final String? anchor;
-  final String content;
 
   @override
   State<ResourceContentWidget> createState() => _ResourceContentWidgetState();
@@ -74,9 +71,8 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
         anchorKey: key,
         data: widget.resource.content,
         extensions: [
-          resourceContentChoice,
-          resourceContentBranch,
-          resourceContentBlockquote,
+          DataThemeHtmlExtension(brightness),
+          resourceContentCustom,
           resourceContentHorizonalRule,
           resourceContentButton,
           resourceContentIcon,
@@ -94,18 +90,59 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
           'p': Style(
             margin: Margins.only(bottom: 8),
           ),
-          'p.highlight, div.highlight': Style(
-            padding: HtmlPaddings.all(8),
-            fontWeight: FontWeight.w700,
-          ),
           'ul, ol': Style(
             padding: HtmlPaddings.only(left: 16),
           ),
+          'highlight': Style(
+            display: Display.block,
+            padding: HtmlPaddings.all(8),
+            fontWeight: FontWeight.w700,
+          ),
+          'highlight[highlight="blue"][data-theme="dark"]': Style(
+            backgroundColor: const Color.fromRGBO(82, 116, 154, 1),
+          ),
+          'highlight[highlight="blue"][data-theme="light"]': Style(
+            backgroundColor: const Color.fromRGBO(209, 228, 255, 1),
+          ),
+          'highlight p, highlight ol, highlight ul': Style(
+            margin: Margins.only(bottom: 0),
+          ),
           'choice, branch': Style(
-            padding: HtmlPaddings.symmetric(horizontal: 8),
+            display: Display.block,
+            padding: HtmlPaddings.all(8),
+            margin: Margins.symmetric(vertical: 8),
             textAlign: TextAlign.center,
             fontWeight: FontWeight.w700,
-            fontSize: FontSize.larger,
+          ),
+          'choice[data-theme="dark"]': Style(
+            backgroundColor: const Color.fromRGBO(252, 166, 51, 1),
+          ),
+          'choice[data-theme="light"]': Style(
+            backgroundColor: const Color.fromRGBO(255, 207, 143, 1),
+          ),
+          'branch[data-theme="dark"]': Style(
+            backgroundColor: const Color.fromRGBO(82, 116, 154, 1),
+          ),
+          'branch[data-theme="light"]': Style(
+            backgroundColor: const Color.fromRGBO(209, 228, 255, 1),
+          ),
+          'blockquote': Style(
+            display: Display.block,
+            margin: Margins.only(bottom: 8),
+            padding: HtmlPaddings.all(8),
+            backgroundColor: const Color.fromRGBO(250, 250, 226, 0.15),
+            border: Border.all(
+              color: const Color.fromRGBO(255, 189, 100, 1),
+            ),
+          ),
+          'blockquote[data-theme="dark"]': Style(
+            color: const Color.fromRGBO(235, 237, 240, 1),
+          ),
+          'blockquote[data-theme="light"]': Style(
+            color: const Color.fromRGBO(68, 73, 80, 1),
+          ),
+          'blockquote>:last-child': Style(
+            margin: Margins.only(bottom: 0),
           ),
           'code': Style(
             fontStyle: FontStyle.italic,
@@ -114,34 +151,27 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
           'a': Style(
             color: DefaultTextStyle.of(context).style.color,
           ),
-          'blockquote>:last-child': Style(
-            margin: Margins.only(bottom: 0),
-          ),
-          '.highlight, .highlight p, .highlight div, .highlight ol, .highlight ul': Style(
-            margin: Margins.only(bottom: 0),
-          ),
-          '.text': Style(
+          '*[color]': Style(
             fontWeight: FontWeight.w700,
           ),
-          'button': Style.fromTextStyle(
-            Theme.of(context).textTheme.labelLarge!.copyWith(
-              color: switch (brightness) {
-                Brightness.dark => const Color.fromRGBO(30, 65, 49, 1),
-                Brightness.light => const Color.fromRGBO(250, 250, 226, 1),
-              },
-            ),
+          '*[color="red"][data-theme="dark"]': Style(
+            color: const Color.fromRGBO(236, 139, 139, 1),
           ),
-          'img': Style(
-            display: Display.block,
+          '*[color="red"][data-theme="light"]': Style(
+            color: const Color.fromRGBO(192, 11, 11, 1),
           ),
-          for (final color in ResourceHighlightColor.values)
-            '.${color.className}': Style(
-              backgroundColor: color.color(brightness),
-            ),
-          for (final color in ResourceTextColor.values)
-            '.${color.className}': Style(
-              color: color.color(brightness),
-            ),
+          '*[color="blue"][data-theme="dark"]': Style(
+            color: const Color.fromRGBO(181, 204, 250, 1),
+          ),
+          '*[color="blue"][data-theme="light"]': Style(
+            color: const Color.fromRGBO(98, 130, 193, 1),
+          ),
+          '*[color="green"]': Style(
+            color: const Color.fromRGBO(3, 155, 40, 1),
+          ),
+          '*[color="gold"]': Style(
+            color: const Color.fromRGBO(181, 158, 0, 1),
+          ),
         },
         onLinkTap: onLinkClick,
         onAnchorTap: onLinkClick,
@@ -150,86 +180,31 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
   }
 }
 
-final resourceContentChoice = TagExtension(
-  tagsToExtend: const {'choice'},
-  builder: (context) {
-    return ThemedBuilder(
-      light: const Color.fromRGBO(255, 207, 143, 1),
-      dark: const Color.fromRGBO(252, 166, 51, 1),
-      builder: (_, color) => Container(
-        width: double.infinity,
-        margin: const EdgeInsetsGeometry.symmetric(vertical: 8),
-        padding: const EdgeInsetsGeometry.symmetric(vertical: 8),
-        color: color,
-        child: Center(
-          child: CssBoxWidget.withInlineSpanChildren(
-            children: context.inlineSpanChildren!,
-            style: context.style!,
-          ),
-        ),
-      ),
-    );
-  },
-);
+class DataThemeHtmlExtension extends HtmlExtension {
+  const DataThemeHtmlExtension(this.brightness);
 
-final resourceContentBranch = TagExtension(
-  tagsToExtend: const {'branch'},
-  builder: (context) {
-    return ThemedBuilder(
-      light: const Color.fromRGBO(82, 116, 154, 1),
-      dark: const Color.fromRGBO(209, 228, 255, 1),
-      builder: (_, color) => Container(
-        width: double.infinity,
-        margin: const EdgeInsetsGeometry.symmetric(vertical: 8),
-        padding: const EdgeInsetsGeometry.symmetric(vertical: 8),
-        color: color,
-        child: Center(
-          child: CssBoxWidget.withInlineSpanChildren(
-            children: context.inlineSpanChildren!,
-            style: context.style!,
-          ),
-        ),
-      ),
-    );
-  },
-);
+  final Brightness brightness;
 
-final resourceContentBlockquote = TagExtension(
-  tagsToExtend: const {'blockquote'},
-  builder: (context) {
-    return ThemedBuilder(
-      light: (
-        background: const Color.fromRGBO(250, 250, 226, 0.15),
-        text: const Color.fromRGBO(68, 73, 80, 1),
-      ),
-      dark: (
-        background: const Color.fromRGBO(250, 250, 226, 0.15),
-        text: const Color.fromRGBO(235, 237, 240, 1),
-      ),
-      builder: (c, color) => Theme(
-        data: Theme.of(c).copyWith(
-          textTheme: TextTheme(
-            bodyMedium: TextStyle(color: color.text),
-            bodyLarge: TextStyle(color: color.text),
-            titleLarge: TextStyle(color: color.text, fontWeight: FontWeight.bold),
-          ),
-        ),
-        child: Container(
-          margin: const EdgeInsets.only(bottom: 8),
-          padding: const EdgeInsets.all(8),
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: color.background,
-            border: Border.all(color: Colors.amber),
-          ),
-          child: CssBoxWidget.withInlineSpanChildren(
-            children: context.inlineSpanChildren!,
-            style: context.style!,
-          ),
-        ),
-      ),
-    );
-  },
+  @override
+  final Set<String> supportedTags = const {};
+
+  @override
+  bool matches(ExtensionContext context) {
+    return context.currentStep == CurrentStep.preStyling;
+  }
+
+  @override
+  void beforeStyle(ExtensionContext context) {
+    context.node.attributes['data-theme'] = brightness.name;
+  }
+}
+
+final resourceContentCustom = TagExtension(
+  tagsToExtend: const {'highlight', 'choice', 'branch', 'blockquote'},
+  builder: (context) => CssBoxWidget.withInlineSpanChildren(
+    children: context.inlineSpanChildren!,
+    style: context.style!,
+  ),
 );
 
 final resourceContentHorizonalRule = TagExtension(
@@ -251,10 +226,7 @@ final resourceContentButton = TagExtension(
             context.attributes,
             context.element,
           ),
-          child: CssBoxWidget.withInlineSpanChildren(
-            children: context.inlineSpanChildren!,
-            style: context.style!,
-          ),
+          child: Text(context.element?.text ?? ''),
         ),
       ),
     );
@@ -272,14 +244,12 @@ final resourceContentIcon = TagExtension.inline(
     }
 
     final textColor = context.style?.color;
-    final iconColor = ResourceTextColor.values.firstWhereOrNull((e) => context.classes.contains(e.className));
     final italic = context.style?.fontStyle == FontStyle.italic;
     return TextScaledSpan(
       (context, height) {
-        final brightness = Theme.of(context).brightness;
         final image = iconImage.image(
           height: height * 1.2,
-          color: iconColor?.color(brightness) ?? textColor,
+          color: textColor,
         );
         if (italic) {
           return Transform(

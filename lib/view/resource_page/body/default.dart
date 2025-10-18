@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/experimental/scope.dart';
 
-import '/resources.dart';
+import '../content.dart';
 import '../page.dart';
 import '../providers.dart';
-import '../content.dart';
 
 @Dependencies([
   resource,
@@ -21,13 +20,12 @@ class DefaultBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final resource = ref.watch(resourceProvider);
     final anchor = ref.watch(anchorProvider);
-    return switch (resource) {
-      Resource(content: final content?) => ResourceContentWidget(
+    return switch (resource.content != null) {
+      true => ResourceContentWidget(
         resource: resource,
         anchor: anchor,
-        content: content,
       ),
-      _ => const ResourceLinkList(),
+      false => const ResourceLinkList(),
     };
   }
 }
