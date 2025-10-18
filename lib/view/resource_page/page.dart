@@ -17,7 +17,7 @@ class ResourcePage extends ConsumerWidget {
     super.key,
   });
 
-  final String? resourceId;
+  final String resourceId;
   final String? title;
   final String? anchor;
   final ResourceLookupGroup? lookup;
@@ -44,7 +44,7 @@ class ResourcePage extends ConsumerWidget {
           body: SingleChildScrollView(
             child: Text(
               error.toString(),
-              style: const TextStyle(color: Colors.redAccent),
+              style: const .new(color: Colors.redAccent),
             ),
           ),
         );

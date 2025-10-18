@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class SearchTheme {
   const SearchTheme(this.context);
@@ -11,14 +10,14 @@ class SearchTheme {
     final colorScheme = theme.colorScheme;
     return theme.copyWith(
       appBarTheme: AppBarTheme(
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        systemOverlayStyle: .dark,
         backgroundColor: colorScheme.brightness == Brightness.dark ? Colors.grey[900] : Colors.white,
         iconTheme: theme.primaryIconTheme.copyWith(color: Colors.grey),
         titleTextStyle: theme.textTheme.titleLarge?.copyWith(color: Colors.black),
       ),
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: theme.inputDecorationTheme.hintStyle,
-        border: InputBorder.none,
+        border: .none,
       ),
     );
   }

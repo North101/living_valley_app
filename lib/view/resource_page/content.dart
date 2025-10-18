@@ -30,7 +30,7 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration.zero).then((_) => ensureVisible(widget.anchor));
+    Future.delayed(.zero).then((_) => ensureVisible(widget.anchor));
   }
 
   Future<void> ensureVisible(String? anchor) async {
@@ -79,98 +79,106 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
           resourceContentImg,
         ],
         style: {
-          'html': Style(
-            margin: Margins.zero,
-            padding: HtmlPaddings.symmetric(horizontal: 8),
-            fontSize: FontSize.large,
+          'html': .new(
+            margin: .zero,
+            padding: .symmetric(horizontal: 8),
+            fontSize: .large,
           ),
-          'h1, h2': Style(
-            margin: Margins.only(bottom: 8),
+          'h1, h2': .new(
+            margin: .only(bottom: 8),
           ),
-          'p': Style(
-            margin: Margins.only(bottom: 8),
+          'p': .new(
+            margin: .only(bottom: 8),
           ),
-          'ul, ol': Style(
-            padding: HtmlPaddings.only(left: 16),
+          'ul, ol': .new(
+            padding: .only(left: 16),
           ),
-          'highlight': Style(
-            display: Display.block,
-            padding: HtmlPaddings.all(8),
-            fontWeight: FontWeight.w700,
+          'highlight': .new(
+            display: .block,
+            padding: .all(8),
+            fontWeight: .w700,
           ),
-          'highlight[highlight="blue"][data-theme="dark"]': Style(
-            backgroundColor: const Color.fromRGBO(82, 116, 154, 1),
+          'highlight[highlight="blue"][data-theme="dark"]': .new(
+            backgroundColor: const .fromRGBO(82, 116, 154, 1),
           ),
-          'highlight[highlight="blue"][data-theme="light"]': Style(
-            backgroundColor: const Color.fromRGBO(209, 228, 255, 1),
+          'highlight[highlight="blue"][data-theme="light"]': .new(
+            backgroundColor: const .fromRGBO(209, 228, 255, 1),
           ),
-          'highlight p, highlight ol, highlight ul': Style(
-            margin: Margins.only(bottom: 0),
+          'highlight p, highlight ol, highlight ul': .new(
+            margin: .only(bottom: 0),
           ),
-          'choice, branch': Style(
-            display: Display.block,
-            padding: HtmlPaddings.all(8),
-            margin: Margins.symmetric(vertical: 8),
-            textAlign: TextAlign.center,
-            fontWeight: FontWeight.w700,
+          'choice, branch': .new(
+            display: .block,
+            padding: .all(8),
+            margin: .symmetric(vertical: 8),
+            textAlign: .center,
+            fontWeight: .w700,
           ),
-          'choice[data-theme="dark"]': Style(
-            backgroundColor: const Color.fromRGBO(252, 166, 51, 1),
+          'choice[data-theme="dark"]': .new(
+            backgroundColor: const .fromRGBO(252, 166, 51, 1),
           ),
-          'choice[data-theme="light"]': Style(
-            backgroundColor: const Color.fromRGBO(255, 207, 143, 1),
+          'choice[data-theme="light"]': .new(
+            backgroundColor: const .fromRGBO(255, 207, 143, 1),
           ),
-          'branch[data-theme="dark"]': Style(
-            backgroundColor: const Color.fromRGBO(82, 116, 154, 1),
+          'branch[data-theme="dark"]': .new(
+            backgroundColor: const .fromRGBO(82, 116, 154, 1),
           ),
-          'branch[data-theme="light"]': Style(
-            backgroundColor: const Color.fromRGBO(209, 228, 255, 1),
+          'branch[data-theme="light"]': .new(
+            backgroundColor: const .fromRGBO(209, 228, 255, 1),
           ),
-          'blockquote': Style(
-            display: Display.block,
-            margin: Margins.only(bottom: 8),
-            padding: HtmlPaddings.all(8),
-            backgroundColor: const Color.fromRGBO(250, 250, 226, 0.15),
-            border: Border.all(
-              color: const Color.fromRGBO(255, 189, 100, 1),
+          'blockquote': .new(
+            display: .block,
+            margin: .only(bottom: 8),
+            padding: .all(8),
+            backgroundColor: const .fromRGBO(250, 250, 226, 0.15),
+            border: .all(
+              color: const .fromRGBO(255, 189, 100, 1),
             ),
           ),
-          'blockquote[data-theme="dark"]': Style(
-            color: const Color.fromRGBO(235, 237, 240, 1),
+          'blockquote[data-theme="dark"]': .new(
+            color: const .fromRGBO(235, 237, 240, 1),
           ),
-          'blockquote[data-theme="light"]': Style(
-            color: const Color.fromRGBO(68, 73, 80, 1),
+          'blockquote[data-theme="light"]': .new(
+            color: const .fromRGBO(68, 73, 80, 1),
           ),
-          'blockquote>:last-child': Style(
-            margin: Margins.only(bottom: 0),
+          'blockquote>:last-child': .new(
+            margin: .only(bottom: 0),
           ),
-          'code': Style(
-            fontStyle: FontStyle.italic,
-            backgroundColor: const Color.fromRGBO(250, 250, 226, 0.2),
+          'code': .new(
+            fontStyle: .italic,
+            backgroundColor: const .fromRGBO(250, 250, 226, 0.2),
           ),
-          'a': Style(
+          'a': .new(
             color: DefaultTextStyle.of(context).style.color,
           ),
-          '*[color]': Style(
-            fontWeight: FontWeight.w700,
+          '*[color]': .new(
+            fontWeight: .w700,
           ),
-          '*[color="red"][data-theme="dark"]': Style(
-            color: const Color.fromRGBO(236, 139, 139, 1),
+          '*[color="red"][data-theme="dark"]': .new(
+            color: const .fromRGBO(236, 139, 139, 1),
           ),
-          '*[color="red"][data-theme="light"]': Style(
-            color: const Color.fromRGBO(192, 11, 11, 1),
+          '*[color="red"][data-theme="light"]': .new(
+            color: const .fromRGBO(192, 11, 11, 1),
           ),
-          '*[color="blue"][data-theme="dark"]': Style(
-            color: const Color.fromRGBO(181, 204, 250, 1),
+          '*[color="blue"][data-theme="dark"]': .new(
+            color: const .fromRGBO(181, 204, 250, 1),
           ),
-          '*[color="blue"][data-theme="light"]': Style(
-            color: const Color.fromRGBO(98, 130, 193, 1),
+          '*[color="blue"][data-theme="light"]': .new(
+            color: const .fromRGBO(98, 130, 193, 1),
           ),
-          '*[color="green"]': Style(
-            color: const Color.fromRGBO(3, 155, 40, 1),
+          '*[color="green"]': .new(
+            color: const .fromRGBO(3, 155, 40, 1),
           ),
-          '*[color="gold"]': Style(
-            color: const Color.fromRGBO(181, 158, 0, 1),
+          '*[color="gold"]': .new(
+            color: const .fromRGBO(181, 158, 0, 1),
+          ),
+          'imgfooter': .new(
+            display: .block,
+            fontSize: .medium,
+            fontWeight: .w700,
+            fontStyle: .italic,
+            textAlign: .center,
+            margin: .only(bottom: 16),
           ),
         },
         onLinkTap: onLinkClick,
@@ -190,7 +198,7 @@ class DataThemeHtmlExtension extends HtmlExtension {
 
   @override
   bool matches(ExtensionContext context) {
-    return context.currentStep == CurrentStep.preStyling;
+    return context.currentStep == .preStyling;
   }
 
   @override
@@ -200,7 +208,13 @@ class DataThemeHtmlExtension extends HtmlExtension {
 }
 
 final resourceContentCustom = TagExtension(
-  tagsToExtend: const {'highlight', 'choice', 'branch', 'blockquote'},
+  tagsToExtend: const {
+    'highlight',
+    'choice',
+    'branch',
+    'blockquote',
+    'imgfooter',
+  },
   builder: (context) => CssBoxWidget.withInlineSpanChildren(
     children: context.inlineSpanChildren!,
     style: context.style!,
@@ -217,9 +231,9 @@ final resourceContentButton = TagExtension(
   builder: (context) {
     final url = context.attributes['href'];
     return Padding(
-      padding: const EdgeInsetsGeometry.symmetric(vertical: 3.5),
+      padding: const .symmetric(vertical: 3.5),
       child: SizedBox(
-        width: double.infinity,
+        width: .infinity,
         child: FilledButton(
           onPressed: () => context.parser.onLinkTap?.call(
             url,
@@ -244,7 +258,7 @@ final resourceContentIcon = TagExtension.inline(
     }
 
     final textColor = context.style?.color;
-    final italic = context.style?.fontStyle == FontStyle.italic;
+    final italic = context.style?.fontStyle == .italic;
     return TextScaledSpan(
       (context, height) {
         final image = iconImage.image(
@@ -253,8 +267,8 @@ final resourceContentIcon = TagExtension.inline(
         );
         if (italic) {
           return Transform(
-            alignment: Alignment.bottomCenter,
-            transform: Matrix4.skewX(-0.3),
+            alignment: .bottomCenter,
+            transform: .skewX(-0.3),
             child: image,
           );
         }
@@ -267,7 +281,7 @@ final resourceContentIcon = TagExtension.inline(
 final resourceContentImg = TagWrapExtension(
   tagsToWrap: const {'img'},
   builder: (child) => SizedBox(
-    width: double.infinity,
+    width: .infinity,
     child: child,
   ),
 );

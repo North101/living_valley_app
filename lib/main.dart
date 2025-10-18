@@ -21,41 +21,41 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appTitle,
-      themeMode: ThemeMode.system,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        scaffoldBackgroundColor: const Color.fromRGBO(255, 255, 240, 1),
-        primaryColor: const Color.fromRGBO(30, 65, 49, 1),
-        colorScheme: const ColorScheme.light(
-          surface: Color.fromRGBO(255, 255, 240, 1),
-          onSurface: Color.fromRGBO(30, 65, 49, 1),
-          primary: Color.fromRGBO(30, 65, 49, 1),
-          onPrimary: Color.fromRGBO(255, 255, 240, 1),
+      themeMode: .system,
+      theme: .new(
+        brightness: .light,
+        scaffoldBackgroundColor: const .fromRGBO(255, 255, 240, 1),
+        primaryColor: const .fromRGBO(30, 65, 49, 1),
+        colorScheme: const .light(
+          surface: .fromRGBO(255, 255, 240, 1),
+          onSurface: .fromRGBO(30, 65, 49, 1),
+          primary: .fromRGBO(30, 65, 49, 1),
+          onPrimary: .fromRGBO(255, 255, 240, 1),
         ),
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Color.fromRGBO(30, 65, 49, 1)),
-          bodyLarge: TextStyle(color: Color.fromRGBO(30, 65, 49, 1)),
-          titleLarge: TextStyle(color: Color.fromRGBO(30, 65, 49, 1), fontWeight: FontWeight.bold),
+        textTheme: const .new(
+          bodyMedium: .new(color: .fromRGBO(30, 65, 49, 1)),
+          bodyLarge: .new(color: .fromRGBO(30, 65, 49, 1)),
+          titleLarge: .new(color: .fromRGBO(30, 65, 49, 1), fontWeight: FontWeight.bold),
         ),
       ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color.fromRGBO(30, 65, 49, 1),
-        primaryColor: const Color.fromRGBO(250, 250, 226, 1),
-        colorScheme: const ColorScheme.dark(
-          surface: Color.fromRGBO(30, 65, 49, 1),
-          onSurface: Color.fromRGBO(250, 250, 226, 1),
-          primary: Color.fromRGBO(250, 250, 226, 1),
-          onPrimary: Color.fromRGBO(30, 65, 49, 1),
+      darkTheme: .new(
+        brightness: .dark,
+        scaffoldBackgroundColor: const .fromRGBO(30, 65, 49, 1),
+        primaryColor: const .fromRGBO(250, 250, 226, 1),
+        colorScheme: const .dark(
+          surface: .fromRGBO(30, 65, 49, 1),
+          onSurface: .fromRGBO(250, 250, 226, 1),
+          primary: .fromRGBO(250, 250, 226, 1),
+          onPrimary: .fromRGBO(30, 65, 49, 1),
         ),
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Color.fromRGBO(250, 250, 226, 1)),
-          bodyLarge: TextStyle(color: Color.fromRGBO(250, 250, 226, 1)),
-          titleLarge: TextStyle(color: Color.fromRGBO(250, 250, 226, 1), fontWeight: FontWeight.bold),
+        textTheme: const .new(
+          bodyMedium: .new(color: .fromRGBO(250, 250, 226, 1)),
+          bodyLarge: .new(color: .fromRGBO(250, 250, 226, 1)),
+          titleLarge: .new(color: .fromRGBO(250, 250, 226, 1), fontWeight: FontWeight.bold),
         ),
       ),
       home: const ResourcePage(
-        resourceId: null,
+        resourceId: '',
         title: null,
         anchor: null,
         lookup: null,

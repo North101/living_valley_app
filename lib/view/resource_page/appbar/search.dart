@@ -17,7 +17,7 @@ class SearchAppBar extends ConsumerStatefulWidget implements PreferredSizeWidget
   ConsumerState<ConsumerStatefulWidget> createState() => SearchAppBarState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const .fromHeight(kToolbarHeight);
 }
 
 class SearchAppBarState extends ConsumerState<SearchAppBar> {
@@ -38,8 +38,8 @@ class SearchAppBarState extends ConsumerState<SearchAppBar> {
             focusNode: _focusNode,
             controller: _controller,
             style: theme.textTheme.titleLarge,
-            textInputAction: TextInputAction.search,
-            decoration: const InputDecoration(hintText: 'Search'),
+            textInputAction: .search,
+            decoration: const .new(hintText: 'Search'),
             onChanged: (value) => ref.read(searchProvider.notifier).set(value),
           ),
           actions: [
