@@ -10,7 +10,7 @@ abstract class Resource with _$Resource {
     required String title,
     required String? content,
     required List<ResourceLink> links,
-    required ResourceLookupGroup? lookup,
+    required List<ResourceLink>? lookup,
   }) = _Resource;
 
   factory Resource.fromJson(Map<String, Object?> json) => _$ResourceFromJson(json);
@@ -24,14 +24,4 @@ abstract class ResourceLink with _$ResourceLink {
   }) = _ResourceLink;
 
   factory ResourceLink.fromJson(Map<String, Object?> json) => _$ResourceLinkFromJson(json);
-}
-
-@Freezed(copyWith: false)
-abstract class ResourceLookupGroup with _$ResourceLookupGroup {
-  const factory ResourceLookupGroup({
-    required String title,
-    required List<ResourceLink> links,
-  }) = _ResourceLookupGroup;
-
-  factory ResourceLookupGroup.fromJson(Map<String, Object?> json) => _$ResourceLookupGroupFromJson(json);
 }

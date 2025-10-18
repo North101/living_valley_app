@@ -20,7 +20,7 @@ class ResourcePage extends ConsumerWidget {
   final String resourceId;
   final String? title;
   final String? anchor;
-  final ResourceLookupGroup? lookup;
+  final List<ResourceLink>? lookup;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

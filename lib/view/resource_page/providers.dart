@@ -51,6 +51,6 @@ Iterable<ResourceLink> relativeLinks(Ref ref) {
 Iterable<ResourceLink> lookupLinks(Ref ref) {
   final search = (ref.watch(searchProvider) ?? '').toLowerCase();
   final resource = ref.watch(resourceProvider);
-  final links = resource.lookup?.links ?? [];
+  final links = resource.lookup ?? [];
   return links.where((e) => search.isEmpty || e.title.toLowerCase().startsWith(search));
 }

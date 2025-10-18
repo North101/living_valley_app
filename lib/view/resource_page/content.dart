@@ -40,7 +40,7 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
     await Scrollable.ensureVisible(anchorContext);
   }
 
-  void onLinkClick(String? url, Map<String, String> attributes, html.Element? element) async {
+  Future<void> onLinkClick(String? url, Map<String, String> attributes, html.Element? element) async {
     if (url == null) return;
 
     final uri = Uri.parse(url);

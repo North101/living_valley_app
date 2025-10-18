@@ -18,7 +18,7 @@ final class ReadResourceProvider
     with $FutureModifier<Resource>, $FutureProvider<Resource> {
   const ReadResourceProvider._({
     required ReadResourceFamily super.from,
-    required (String, ResourceLookupGroup?) super.argument,
+    required (String, List<ResourceLink>?) super.argument,
   }) : super(
          retry: null,
          name: r'readResourceProvider',
@@ -44,7 +44,7 @@ final class ReadResourceProvider
 
   @override
   FutureOr<Resource> create(Ref ref) {
-    final argument = this.argument as (String, ResourceLookupGroup?);
+    final argument = this.argument as (String, List<ResourceLink>?);
     return readResource(ref, argument.$1, argument.$2);
   }
 
@@ -59,13 +59,13 @@ final class ReadResourceProvider
   }
 }
 
-String _$readResourceHash() => r'7abb8e73e7890ba7a263cd9c07e6d256ec0fb1de';
+String _$readResourceHash() => r'79f8df59b7b38cfa7001c4c0c62f15ecde79df15';
 
 final class ReadResourceFamily extends $Family
     with
         $FunctionalFamilyOverride<
           FutureOr<Resource>,
-          (String, ResourceLookupGroup?)
+          (String, List<ResourceLink>?)
         > {
   const ReadResourceFamily._()
     : super(
@@ -76,7 +76,7 @@ final class ReadResourceFamily extends $Family
         isAutoDispose: true,
       );
 
-  ReadResourceProvider call(String resourceId, ResourceLookupGroup? lookup) =>
+  ReadResourceProvider call(String resourceId, List<ResourceLink>? lookup) =>
       ReadResourceProvider._(argument: (resourceId, lookup), from: this);
 
   @override
