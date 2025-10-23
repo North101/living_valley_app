@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:html/dom.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
@@ -77,12 +78,14 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
           resourceContentButton,
           resourceContentIcon,
           resourceContentImg,
+          resourceContentCopy,
         ],
         style: {
           'html': .new(
             margin: .zero,
             padding: .symmetric(horizontal: 8),
             fontSize: .large,
+            color: const .fromRGBO(250, 250, 226, 1),
           ),
           'h1, h2': .new(
             margin: .only(bottom: 8),
@@ -151,7 +154,7 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
           'a': .new(
             color: DefaultTextStyle.of(context).style.color,
           ),
-          '*[color]': .new(
+          '*[color], mission, event, reward': .new(
             fontWeight: .w700,
           ),
           '*[color="red"][data-theme="dark"]': .new(
@@ -160,10 +163,10 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
           '*[color="red"][data-theme="light"]': .new(
             color: const .fromRGBO(192, 11, 11, 1),
           ),
-          '*[color="blue"][data-theme="dark"]': .new(
+          '*[color="blue"][data-theme="dark"], event': .new(
             color: const .fromRGBO(181, 204, 250, 1),
           ),
-          '*[color="blue"][data-theme="light"]': .new(
+          '*[color="blue"][data-theme="light"], event': .new(
             color: const .fromRGBO(98, 130, 193, 1),
           ),
           '*[color="green"]': .new(
@@ -284,4 +287,27 @@ final resourceContentImg = TagWrapExtension(
     width: .infinity,
     child: child,
   ),
+);
+
+final resourceContentCopy = TagExtension.inline(
+  tagsToExtend: const {
+    'mission',
+    'event',
+    'reward',
+  },
+  builder: (context) {
+    return WidgetSpan(
+      alignment: PlaceholderAlignment.baseline,
+      baseline: TextBaseline.alphabetic,
+      child: InkWell(
+        onTap: () => Clipboard.setData(ClipboardData(text: context.innerHtml)),
+        child: CssBoxWidget.withInlineSpanChildren(
+          children: [
+            TextSpan(children: context.inlineSpanChildren!),
+          ],
+          style: context.style!,
+        ),
+      ),
+    );
+  },
 );

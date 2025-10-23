@@ -10,19 +10,19 @@ part of 'providers.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(SearchNotifier)
-const searchProvider = SearchNotifierProvider._();
+final searchProvider = SearchNotifierProvider._();
 
 final class SearchNotifierProvider
     extends $NotifierProvider<SearchNotifier, String?> {
-  const SearchNotifierProvider._()
+  SearchNotifierProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
         name: r'searchProvider',
         isAutoDispose: true,
-        dependencies: const <ProviderOrFamily>[],
-        $allTransitiveDependencies: const <ProviderOrFamily>[],
+        dependencies: <ProviderOrFamily>[],
+        $allTransitiveDependencies: <ProviderOrFamily>[],
       );
 
   @override
@@ -48,7 +48,6 @@ abstract class _$SearchNotifier extends $Notifier<String?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<String?, String?>;
     final element =
         ref.element
@@ -58,29 +57,29 @@ abstract class _$SearchNotifier extends $Notifier<String?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(isSearching)
-const isSearchingProvider = IsSearchingProvider._();
+final isSearchingProvider = IsSearchingProvider._();
 
 final class IsSearchingProvider extends $FunctionalProvider<bool, bool, bool>
     with $Provider<bool> {
-  const IsSearchingProvider._()
+  IsSearchingProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
         name: r'isSearchingProvider',
         isAutoDispose: true,
-        dependencies: const <ProviderOrFamily>[searchProvider],
-        $allTransitiveDependencies: const <ProviderOrFamily>[
+        dependencies: <ProviderOrFamily>[searchProvider],
+        $allTransitiveDependencies: <ProviderOrFamily>[
           IsSearchingProvider.$allTransitiveDependencies0,
         ],
       );
 
-  static const $allTransitiveDependencies0 = searchProvider;
+  static final $allTransitiveDependencies0 = searchProvider;
 
   @override
   String debugGetCreateSourceHash() => _$isSearchingHash();
@@ -107,22 +106,22 @@ final class IsSearchingProvider extends $FunctionalProvider<bool, bool, bool>
 String _$isSearchingHash() => r'15c8de74fb2abf3a0df5327e90d4010460145e3a';
 
 @ProviderFor(canSearch)
-const canSearchProvider = CanSearchProvider._();
+final canSearchProvider = CanSearchProvider._();
 
 final class CanSearchProvider extends $FunctionalProvider<bool, bool, bool>
     with $Provider<bool> {
-  const CanSearchProvider._()
+  CanSearchProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
         name: r'canSearchProvider',
         isAutoDispose: true,
-        dependencies: const <ProviderOrFamily>[
+        dependencies: <ProviderOrFamily>[
           relativeLinksProvider,
           lookupLinksProvider,
         ],
-        $allTransitiveDependencies: const <ProviderOrFamily>{
+        $allTransitiveDependencies: <ProviderOrFamily>{
           CanSearchProvider.$allTransitiveDependencies0,
           CanSearchProvider.$allTransitiveDependencies1,
           CanSearchProvider.$allTransitiveDependencies2,
@@ -130,12 +129,12 @@ final class CanSearchProvider extends $FunctionalProvider<bool, bool, bool>
         },
       );
 
-  static const $allTransitiveDependencies0 = relativeLinksProvider;
-  static const $allTransitiveDependencies1 =
+  static final $allTransitiveDependencies0 = relativeLinksProvider;
+  static final $allTransitiveDependencies1 =
       RelativeLinksProvider.$allTransitiveDependencies0;
-  static const $allTransitiveDependencies2 =
+  static final $allTransitiveDependencies2 =
       RelativeLinksProvider.$allTransitiveDependencies1;
-  static const $allTransitiveDependencies3 = lookupLinksProvider;
+  static final $allTransitiveDependencies3 = lookupLinksProvider;
 
   @override
   String debugGetCreateSourceHash() => _$canSearchHash();
@@ -162,20 +161,20 @@ final class CanSearchProvider extends $FunctionalProvider<bool, bool, bool>
 String _$canSearchHash() => r'621cc8c3aa15ab29caa31f1962a3be0e1aa0cee6';
 
 @ProviderFor(resource)
-const resourceProvider = ResourceProvider._();
+final resourceProvider = ResourceProvider._();
 
 final class ResourceProvider
     extends $FunctionalProvider<Resource, Resource, Resource>
     with $Provider<Resource> {
-  const ResourceProvider._()
+  ResourceProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
         name: r'resourceProvider',
         isAutoDispose: true,
-        dependencies: const <ProviderOrFamily>[],
-        $allTransitiveDependencies: const <ProviderOrFamily>[],
+        dependencies: <ProviderOrFamily>[],
+        $allTransitiveDependencies: <ProviderOrFamily>[],
       );
 
   @override
@@ -203,20 +202,20 @@ final class ResourceProvider
 String _$resourceHash() => r'9fbc1965e4aab07f46859c583bf6c2087ebbaf46';
 
 @ProviderFor(anchor)
-const anchorProvider = AnchorProvider._();
+final anchorProvider = AnchorProvider._();
 
 final class AnchorProvider
     extends $FunctionalProvider<String?, String?, String?>
     with $Provider<String?> {
-  const AnchorProvider._()
+  AnchorProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
         name: r'anchorProvider',
         isAutoDispose: true,
-        dependencies: const <ProviderOrFamily>[],
-        $allTransitiveDependencies: const <ProviderOrFamily>[],
+        dependencies: <ProviderOrFamily>[],
+        $allTransitiveDependencies: <ProviderOrFamily>[],
       );
 
   @override
@@ -244,7 +243,7 @@ final class AnchorProvider
 String _$anchorHash() => r'7d11296c8cc2dc7afb1968275297debe1d8a4b8e';
 
 @ProviderFor(relativeLinks)
-const relativeLinksProvider = RelativeLinksProvider._();
+final relativeLinksProvider = RelativeLinksProvider._();
 
 final class RelativeLinksProvider
     extends
@@ -254,25 +253,22 @@ final class RelativeLinksProvider
           Iterable<ResourceLink>
         >
     with $Provider<Iterable<ResourceLink>> {
-  const RelativeLinksProvider._()
+  RelativeLinksProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
         name: r'relativeLinksProvider',
         isAutoDispose: true,
-        dependencies: const <ProviderOrFamily>[
-          searchProvider,
-          resourceProvider,
-        ],
-        $allTransitiveDependencies: const <ProviderOrFamily>[
+        dependencies: <ProviderOrFamily>[searchProvider, resourceProvider],
+        $allTransitiveDependencies: <ProviderOrFamily>[
           RelativeLinksProvider.$allTransitiveDependencies0,
           RelativeLinksProvider.$allTransitiveDependencies1,
         ],
       );
 
-  static const $allTransitiveDependencies0 = searchProvider;
-  static const $allTransitiveDependencies1 = resourceProvider;
+  static final $allTransitiveDependencies0 = searchProvider;
+  static final $allTransitiveDependencies1 = resourceProvider;
 
   @override
   String debugGetCreateSourceHash() => _$relativeLinksHash();
@@ -300,7 +296,7 @@ final class RelativeLinksProvider
 String _$relativeLinksHash() => r'6169478daf207fc3e4f5e9b505334852a3fb9e5e';
 
 @ProviderFor(lookupLinks)
-const lookupLinksProvider = LookupLinksProvider._();
+final lookupLinksProvider = LookupLinksProvider._();
 
 final class LookupLinksProvider
     extends
@@ -310,25 +306,22 @@ final class LookupLinksProvider
           Iterable<ResourceLink>
         >
     with $Provider<Iterable<ResourceLink>> {
-  const LookupLinksProvider._()
+  LookupLinksProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
         name: r'lookupLinksProvider',
         isAutoDispose: true,
-        dependencies: const <ProviderOrFamily>[
-          searchProvider,
-          resourceProvider,
-        ],
-        $allTransitiveDependencies: const <ProviderOrFamily>[
+        dependencies: <ProviderOrFamily>[searchProvider, resourceProvider],
+        $allTransitiveDependencies: <ProviderOrFamily>[
           LookupLinksProvider.$allTransitiveDependencies0,
           LookupLinksProvider.$allTransitiveDependencies1,
         ],
       );
 
-  static const $allTransitiveDependencies0 = searchProvider;
-  static const $allTransitiveDependencies1 = resourceProvider;
+  static final $allTransitiveDependencies0 = searchProvider;
+  static final $allTransitiveDependencies1 = resourceProvider;
 
   @override
   String debugGetCreateSourceHash() => _$lookupLinksHash();
@@ -353,4 +346,4 @@ final class LookupLinksProvider
   }
 }
 
-String _$lookupLinksHash() => r'2c4870b5eb3ff8243b7c8874327fea67dae0341e';
+String _$lookupLinksHash() => r'393e2efaab13306103575da31f7128f729528476';

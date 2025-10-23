@@ -8,30 +8,31 @@ environment:
   sdk: ^3.10.0-000.0.beta
 
 dependencies:
-  collection: ^1.19.1
   flutter:
     sdk: flutter
+
+  collection: ^1.19.1
   flutter_html: ^3.0.0
-  flutter_riverpod: ^3.0.3
+  flutter_riverpod: ^3.1.0
   freezed_annotation: ^3.1.0
   html: ^0.15.6
   json_annotation: ^4.9.0
-  riverpod_annotation: ^3.0.3
+  riverpod_annotation: ^4.0.0
   url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  build_runner: ^2.9.0
+  build_runner: ^2.11.1
   custom_lint: ^0.8.1
   flutter_gen_runner: ^5.12.0
   flutter_lints: ^6.0.0
   freezed: ^3.2.3
-  json_serializable: ^6.11.1
-  package_rename: ^1.10.0
-  riverpod_generator: ^3.0.3
-  riverpod_lint: ^3.0.3
+  json_serializable: ^6.11.2
+  package_rename: ^1.10.1
+  riverpod_generator: ^4.0.0+1
+  riverpod_lint: ^3.1.0
 
 flutter:
   uses-material-design: true
@@ -201,7 +202,7 @@ flutter:
     - assets/data/updates/
     - assets/data/updates/
     - assets/data/updates/campaign_guide_errata/
-    - assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/
+    - assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors/
     - assets/data/updates/card_errata/
     - assets/data/updates/the_elders_book_of_uncommon_wisdom/
   

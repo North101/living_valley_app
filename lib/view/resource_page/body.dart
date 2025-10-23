@@ -21,9 +21,11 @@ class ResourceBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return switch (ref.watch(isSearchingProvider)) {
-      true => const SearchBody(),
-      false => const DefaultBody(),
-    };
+    return SafeArea(
+      child: switch (ref.watch(isSearchingProvider)) {
+        true => const SearchBody(),
+        false => const DefaultBody(),
+      },
+    );
   }
 }

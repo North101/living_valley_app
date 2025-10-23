@@ -10,15 +10,15 @@ part of 'providers.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(readResource)
-const readResourceProvider = ReadResourceFamily._();
+final readResourceProvider = ReadResourceFamily._();
 
 final class ReadResourceProvider
     extends
         $FunctionalProvider<AsyncValue<Resource>, Resource, FutureOr<Resource>>
     with $FutureModifier<Resource>, $FutureProvider<Resource> {
-  const ReadResourceProvider._({
+  ReadResourceProvider._({
     required ReadResourceFamily super.from,
-    required (String, List<ResourceLink>?) super.argument,
+    required (String, List<ResourceLink>) super.argument,
   }) : super(
          retry: null,
          name: r'readResourceProvider',
@@ -44,7 +44,7 @@ final class ReadResourceProvider
 
   @override
   FutureOr<Resource> create(Ref ref) {
-    final argument = this.argument as (String, List<ResourceLink>?);
+    final argument = this.argument as (String, List<ResourceLink>);
     return readResource(ref, argument.$1, argument.$2);
   }
 
@@ -59,15 +59,15 @@ final class ReadResourceProvider
   }
 }
 
-String _$readResourceHash() => r'79f8df59b7b38cfa7001c4c0c62f15ecde79df15';
+String _$readResourceHash() => r'fd672ea76970ccde0b3705602ddf5cfee58a5af9';
 
 final class ReadResourceFamily extends $Family
     with
         $FunctionalFamilyOverride<
           FutureOr<Resource>,
-          (String, List<ResourceLink>?)
+          (String, List<ResourceLink>)
         > {
-  const ReadResourceFamily._()
+  ReadResourceFamily._()
     : super(
         retry: null,
         name: r'readResourceProvider',
@@ -76,7 +76,7 @@ final class ReadResourceFamily extends $Family
         isAutoDispose: true,
       );
 
-  ReadResourceProvider call(String resourceId, List<ResourceLink>? lookup) =>
+  ReadResourceProvider call(String resourceId, List<ResourceLink> lookup) =>
       ReadResourceProvider._(argument: (resourceId, lookup), from: this);
 
   @override

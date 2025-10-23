@@ -9,8 +9,9 @@ abstract class Resource with _$Resource {
     required String id,
     required String title,
     required String? content,
+    required List<ResourceLink> anchors,
     required List<ResourceLink> links,
-    required List<ResourceLink>? lookup,
+    required List<ResourceLink> lookup,
   }) = _Resource;
 
   factory Resource.fromJson(Map<String, Object?> json) => _$ResourceFromJson(json);

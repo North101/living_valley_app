@@ -170,8 +170,11 @@ class $AssetsDataCampaignGuidesGen {
   /// File path: assets/data/campaign_guides/lure_of_the_valley.json
   String get lureOfTheValleyJson => 'assets/data/campaign_guides/lure_of_the_valley.json';
 
+  /// File path: assets/data/campaign_guides/spire_in_bloom.json
+  String get spireInBloom => 'assets/data/campaign_guides/spire_in_bloom.json';
+
   /// List of all assets
-  List<String> get values => [legacyOfTheAncestorsJson, lureOfTheValleyJson];
+  List<String> get values => [legacyOfTheAncestorsJson, lureOfTheValleyJson, spireInBloom];
 }
 
 class $AssetsDataOneDayMissionsGen {
@@ -371,13 +374,13 @@ class $AssetsDataUpdatesGen {
   /// File path: assets/data/updates/campaign_guide_errata.json
   String get campaignGuideErrataJson => 'assets/data/updates/campaign_guide_errata.json';
 
-  /// Directory path: assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors
+  /// Directory path: assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors
   $AssetsDataUpdatesCampaignGuideErrataLegacyOfTheAncestorsGen get campaignGuideErrataLegacyOfTheAncestors =>
       const $AssetsDataUpdatesCampaignGuideErrataLegacyOfTheAncestorsGen();
 
-  /// File path: assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors.json
+  /// File path: assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors.json
   String get campaignGuideErrataLegacyOfTheAncestorsJson =>
-      'assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors.json';
+      'assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors.json';
 
   /// Directory path: assets/data/updates/card_errata
   $AssetsDataUpdatesCardErrataGen get cardErrata => const $AssetsDataUpdatesCardErrataGen();
@@ -1756,8 +1759,8 @@ class $AssetsDataOneDayMissionsMissingPersonGen {
   /// File path: assets/data/one_day_missions/missing_person/1_46_rescue.json
   String get a146Rescue => 'assets/data/one_day_missions/missing_person/1_46_rescue.json';
 
-  /// File path: assets/data/one_day_missions/missing_person/1_48_rescue_.json
-  String get a148Rescue => 'assets/data/one_day_missions/missing_person/1_48_rescue_.json';
+  /// File path: assets/data/one_day_missions/missing_person/1_48_rescue.json
+  String get a148Rescue => 'assets/data/one_day_missions/missing_person/1_48_rescue.json';
 
   /// File path: assets/data/one_day_missions/missing_person/end_of_the_day.json
   String get endOfTheDay => 'assets/data/one_day_missions/missing_person/end_of_the_day.json';
@@ -1772,11 +1775,11 @@ class $AssetsDataOneDayMissionsPredatoryInstinctsGen {
   /// File path: assets/data/one_day_missions/predatory_instincts/1_42.json
   String get a142 => 'assets/data/one_day_missions/predatory_instincts/1_42.json';
 
-  /// File path: assets/data/one_day_missions/predatory_instincts/1_43_confront_.json
-  String get a143Confront => 'assets/data/one_day_missions/predatory_instincts/1_43_confront_.json';
+  /// File path: assets/data/one_day_missions/predatory_instincts/1_43_confront.json
+  String get a143Confront => 'assets/data/one_day_missions/predatory_instincts/1_43_confront.json';
 
-  /// File path: assets/data/one_day_missions/predatory_instincts/1_44_confront_.json
-  String get a144Confront => 'assets/data/one_day_missions/predatory_instincts/1_44_confront_.json';
+  /// File path: assets/data/one_day_missions/predatory_instincts/1_44_confront.json
+  String get a144Confront => 'assets/data/one_day_missions/predatory_instincts/1_44_confront.json';
 
   /// File path: assets/data/one_day_missions/predatory_instincts/end_of_the_day.json
   String get endOfTheDay => 'assets/data/one_day_missions/predatory_instincts/end_of_the_day.json';
@@ -2631,21 +2634,20 @@ class $AssetsDataUpdatesCampaignGuideErrataGen {
 class $AssetsDataUpdatesCampaignGuideErrataLegacyOfTheAncestorsGen {
   const $AssetsDataUpdatesCampaignGuideErrataLegacyOfTheAncestorsGen();
 
-  /// File path: assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/107_2.json
-  String get a1072 => 'assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/107_2.json';
+  /// File path: assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors/107_2.json
+  String get a1072 => 'assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors/107_2.json';
 
-  /// File path: assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/16_kobos_market.json
-  String get a16KobosMarket =>
-      'assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/16_kobos_market.json';
+  /// File path: assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors/16_kobos_market.json
+  String get a16KobosMarket => 'assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors/16_kobos_market.json';
 
-  /// File path: assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/1_101.json
-  String get a1101 => 'assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/1_101.json';
+  /// File path: assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors/1_101.json
+  String get a1101 => 'assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors/1_101.json';
 
-  /// File path: assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/1_103.json
-  String get a1103 => 'assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/1_103.json';
+  /// File path: assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors/1_103.json
+  String get a1103 => 'assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors/1_103.json';
 
-  /// File path: assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/1_117.json
-  String get a1117 => 'assets/data/updates/campaign_guide_errata__legacy_of_the_ancestors/1_117.json';
+  /// File path: assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors/1_117.json
+  String get a1117 => 'assets/data/updates/campaign_guide_errata_legacy_of_the_ancestors/1_117.json';
 
   /// List of all assets
   List<String> get values => [a1072, a16KobosMarket, a1101, a1103, a1117];
@@ -2660,9 +2662,9 @@ class $AssetsDataUpdatesCardErrataGen {
   /// File path: assets/data/updates/card_errata/general_set_card_13_of_15.json
   String get generalSetCard13Of15 => 'assets/data/updates/card_errata/general_set_card_13_of_15.json';
 
-  /// File path: assets/data/updates/card_errata/guardian__conciliator_set_card_1_of_14.json
+  /// File path: assets/data/updates/card_errata/guardian_conciliator_set_card_1_of_14.json
   String get guardianConciliatorSetCard1Of14 =>
-      'assets/data/updates/card_errata/guardian__conciliator_set_card_1_of_14.json';
+      'assets/data/updates/card_errata/guardian_conciliator_set_card_1_of_14.json';
 
   /// File path: assets/data/updates/card_errata/loa_mission_set_card_10_of_42.json
   String get loaMissionSetCard10Of42 => 'assets/data/updates/card_errata/loa_mission_set_card_10_of_42.json';
@@ -2688,20 +2690,20 @@ class $AssetsDataUpdatesCardErrataGen {
   /// File path: assets/data/updates/card_errata/mission_set_card_32_of_34.json
   String get missionSetCard32Of34 => 'assets/data/updates/card_errata/mission_set_card_32_of_34.json';
 
-  /// File path: assets/data/updates/card_errata/quisi_vos_rascal__valley_set_card_2_of_14.json
+  /// File path: assets/data/updates/card_errata/quisi_vos_rascal_valley_set_card_2_of_14.json
   String get quisiVosRascalValleySetCard2Of14 =>
-      'assets/data/updates/card_errata/quisi_vos_rascal__valley_set_card_2_of_14.json';
+      'assets/data/updates/card_errata/quisi_vos_rascal_valley_set_card_2_of_14.json';
 
   /// File path: assets/data/updates/card_errata/rewards_set_card_9_of_31.json
   String get rewardsSetCard9Of31 => 'assets/data/updates/card_errata/rewards_set_card_9_of_31.json';
 
-  /// File path: assets/data/updates/card_errata/the_greenbridge__location_set_card_28_of_37.json
+  /// File path: assets/data/updates/card_errata/the_greenbridge_location_set_card_28_of_37.json
   String get theGreenbridgeLocationSetCard28Of37 =>
-      'assets/data/updates/card_errata/the_greenbridge__location_set_card_28_of_37.json';
+      'assets/data/updates/card_errata/the_greenbridge_location_set_card_28_of_37.json';
 
-  /// File path: assets/data/updates/card_errata/thunderhead__weather_set_card_6_of_8.json
+  /// File path: assets/data/updates/card_errata/thunderhead_weather_set_card_6_of_8.json
   String get thunderheadWeatherSetCard6Of8 =>
-      'assets/data/updates/card_errata/thunderhead__weather_set_card_6_of_8.json';
+      'assets/data/updates/card_errata/thunderhead_weather_set_card_6_of_8.json';
 
   /// List of all assets
   List<String> get values => [
@@ -2726,65 +2728,65 @@ class $AssetsDataUpdatesCardErrataGen {
 class $AssetsDataUpdatesTheEldersBookOfUncommonWisdomGen {
   const $AssetsDataUpdatesTheEldersBookOfUncommonWisdomGen();
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/a_gentle_nudge__shepherd_set_card_3_of_9.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/a_gentle_nudge_shepherd_set_card_3_of_9.json
   String get aGentleNudgeShepherdSetCard3Of9 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/a_gentle_nudge__shepherd_set_card_3_of_9.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/a_gentle_nudge_shepherd_set_card_3_of_9.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/afforded_by_nature__traveler_set_card_2_of_9.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/afforded_by_nature_traveler_set_card_2_of_9.json
   String get affordedByNatureTravelerSetCard2Of9 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/afforded_by_nature__traveler_set_card_2_of_9.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/afforded_by_nature_traveler_set_card_2_of_9.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/functional_replica__artisan_set_card_7_of_9.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/functional_replica_artisan_set_card_7_of_9.json
   String get functionalReplicaArtisanSetCard7Of9 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/functional_replica__artisan_set_card_7_of_9.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/functional_replica_artisan_set_card_7_of_9.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/guardian__conciliator_set_card_1_of_14.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/guardian_conciliator_set_card_1_of_14.json
   String get guardianConciliatorSetCard1Of14 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/guardian__conciliator_set_card_1_of_14.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/guardian_conciliator_set_card_1_of_14.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/hy_pimpots_secret_recipe__reward_set_card_26_of_31.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/hy_pimpots_secret_recipe_reward_set_card_26_of_31.json
   String get hyPimpotsSecretRecipeRewardSetCard26Of31 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/hy_pimpots_secret_recipe__reward_set_card_26_of_31.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/hy_pimpots_secret_recipe_reward_set_card_26_of_31.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/meditation_pillow__traveler_set_card_9_of_9.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/meditation_pillow_traveler_set_card_9_of_9.json
   String get meditationPillowTravelerSetCard9Of9 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/meditation_pillow__traveler_set_card_9_of_9.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/meditation_pillow_traveler_set_card_9_of_9.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/nidocyte_sentinel__conciliator_set_card_11_of_14.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/nidocyte_sentinel_conciliator_set_card_11_of_14.json
   String get nidocyteSentinelConciliatorSetCard11Of14 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/nidocyte_sentinel__conciliator_set_card_11_of_14.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/nidocyte_sentinel_conciliator_set_card_11_of_14.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/one_with_nature__conciliator_set_card_5_of_14.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/one_with_nature_conciliator_set_card_5_of_14.json
   String get oneWithNatureConciliatorSetCard5Of14 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/one_with_nature__conciliator_set_card_5_of_14.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/one_with_nature_conciliator_set_card_5_of_14.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/oru_the_sheep_dog__shepherd_set_card_9_of_9.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/oru_the_sheep_dog_shepherd_set_card_9_of_9.json
   String get oruTheSheepDogShepherdSetCard9Of9 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/oru_the_sheep_dog__shepherd_set_card_9_of_9.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/oru_the_sheep_dog_shepherd_set_card_9_of_9.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/paths_weve_roamed_before__traveler_set_card_2_of_9.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/paths_weve_roamed_before_traveler_set_card_2_of_9.json
   String get pathsWeveRoamedBeforeTravelerSetCard2Of9 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/paths_weve_roamed_before__traveler_set_card_2_of_9.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/paths_weve_roamed_before_traveler_set_card_2_of_9.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/pokodo_the_ferret__conciliator_set_card_13_of_14.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/pokodo_the_ferret_conciliator_set_card_13_of_14.json
   String get pokodoTheFerretConciliatorSetCard13Of14 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/pokodo_the_ferret__conciliator_set_card_13_of_14.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/pokodo_the_ferret_conciliator_set_card_13_of_14.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/prodigy_of_the_floating_tower__shaper_set_card_2_of_14.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/prodigy_of_the_floating_tower_shaper_set_card_2_of_14.json
   String get prodigyOfTheFloatingTowerShaperSetCard2Of14 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/prodigy_of_the_floating_tower__shaper_set_card_2_of_14.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/prodigy_of_the_floating_tower_shaper_set_card_2_of_14.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/safeguard__conciliator_set_card_10_of_14.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/safeguard_conciliator_set_card_10_of_14.json
   String get safeguardConciliatorSetCard10Of14 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/safeguard__conciliator_set_card_10_of_14.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/safeguard_conciliator_set_card_10_of_14.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/share_in_the_valleys_secrets__explorer_set_card_5_of_14.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/share_in_the_valleys_secrets_explorer_set_card_5_of_14.json
   String get shareInTheValleysSecretsExplorerSetCard5Of14 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/share_in_the_valleys_secrets__explorer_set_card_5_of_14.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/share_in_the_valleys_secrets_explorer_set_card_5_of_14.json';
 
-  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/what_should_never_be__shaper_set_card_6_of_14.json
+  /// File path: assets/data/updates/the_elders_book_of_uncommon_wisdom/what_should_never_be_shaper_set_card_6_of_14.json
   String get whatShouldNeverBeShaperSetCard6Of14 =>
-      'assets/data/updates/the_elders_book_of_uncommon_wisdom/what_should_never_be__shaper_set_card_6_of_14.json';
+      'assets/data/updates/the_elders_book_of_uncommon_wisdom/what_should_never_be_shaper_set_card_6_of_14.json';
 
   /// List of all assets
   List<String> get values => [
@@ -4364,11 +4366,11 @@ class $AssetsDataCampaignGuidesLureOfTheValley1MissionsGen {
   /// File path: assets/data/campaign_guides/lure_of_the_valley/1_missions/1_42_lure.json
   String get a142Lure => 'assets/data/campaign_guides/lure_of_the_valley/1_missions/1_42_lure.json';
 
-  /// File path: assets/data/campaign_guides/lure_of_the_valley/1_missions/1_43_confront_.json
-  String get a143Confront => 'assets/data/campaign_guides/lure_of_the_valley/1_missions/1_43_confront_.json';
+  /// File path: assets/data/campaign_guides/lure_of_the_valley/1_missions/1_43_confront.json
+  String get a143Confront => 'assets/data/campaign_guides/lure_of_the_valley/1_missions/1_43_confront.json';
 
-  /// File path: assets/data/campaign_guides/lure_of_the_valley/1_missions/1_44_confront_.json
-  String get a144Confront => 'assets/data/campaign_guides/lure_of_the_valley/1_missions/1_44_confront_.json';
+  /// File path: assets/data/campaign_guides/lure_of_the_valley/1_missions/1_44_confront.json
+  String get a144Confront => 'assets/data/campaign_guides/lure_of_the_valley/1_missions/1_44_confront.json';
 
   /// File path: assets/data/campaign_guides/lure_of_the_valley/1_missions/1_45_search.json
   String get a145Search => 'assets/data/campaign_guides/lure_of_the_valley/1_missions/1_45_search.json';
@@ -4379,8 +4381,8 @@ class $AssetsDataCampaignGuidesLureOfTheValley1MissionsGen {
   /// File path: assets/data/campaign_guides/lure_of_the_valley/1_missions/1_47.json
   String get a147 => 'assets/data/campaign_guides/lure_of_the_valley/1_missions/1_47.json';
 
-  /// File path: assets/data/campaign_guides/lure_of_the_valley/1_missions/1_48_rescue_.json
-  String get a148Rescue => 'assets/data/campaign_guides/lure_of_the_valley/1_missions/1_48_rescue_.json';
+  /// File path: assets/data/campaign_guides/lure_of_the_valley/1_missions/1_48_rescue.json
+  String get a148Rescue => 'assets/data/campaign_guides/lure_of_the_valley/1_missions/1_48_rescue.json';
 
   /// File path: assets/data/campaign_guides/lure_of_the_valley/1_missions/1_49.json
   String get a149 => 'assets/data/campaign_guides/lure_of_the_valley/1_missions/1_49.json';

@@ -10,11 +10,14 @@ _Resource _$ResourceFromJson(Map<String, dynamic> json) => _Resource(
   id: json['id'] as String,
   title: json['title'] as String,
   content: json['content'] as String?,
+  anchors: (json['anchors'] as List<dynamic>)
+      .map((e) => ResourceLink.fromJson(e as Map<String, dynamic>))
+      .toList(),
   links: (json['links'] as List<dynamic>)
       .map((e) => ResourceLink.fromJson(e as Map<String, dynamic>))
       .toList(),
-  lookup: (json['lookup'] as List<dynamic>?)
-      ?.map((e) => ResourceLink.fromJson(e as Map<String, dynamic>))
+  lookup: (json['lookup'] as List<dynamic>)
+      .map((e) => ResourceLink.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 
@@ -22,6 +25,7 @@ Map<String, dynamic> _$ResourceToJson(_Resource instance) => <String, dynamic>{
   'id': instance.id,
   'title': instance.title,
   'content': instance.content,
+  'anchors': instance.anchors,
   'links': instance.links,
   'lookup': instance.lookup,
 };

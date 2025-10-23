@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Resource {
 
- String get id; String get title; String? get content; List<ResourceLink> get links; List<ResourceLink>? get lookup;
+ String get id; String get title; String? get content; List<ResourceLink> get anchors; List<ResourceLink> get links; List<ResourceLink> get lookup;
 /// Create a copy of Resource
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ResourceCopyWith<Resource> get copyWith => _$ResourceCopyWithImpl<Resource>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Resource&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.content, content) || other.content == content)&&const DeepCollectionEquality().equals(other.links, links)&&const DeepCollectionEquality().equals(other.lookup, lookup));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Resource&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.content, content) || other.content == content)&&const DeepCollectionEquality().equals(other.anchors, anchors)&&const DeepCollectionEquality().equals(other.links, links)&&const DeepCollectionEquality().equals(other.lookup, lookup));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,content,const DeepCollectionEquality().hash(links),const DeepCollectionEquality().hash(lookup));
+int get hashCode => Object.hash(runtimeType,id,title,content,const DeepCollectionEquality().hash(anchors),const DeepCollectionEquality().hash(links),const DeepCollectionEquality().hash(lookup));
 
 @override
 String toString() {
-  return 'Resource(id: $id, title: $title, content: $content, links: $links, lookup: $lookup)';
+  return 'Resource(id: $id, title: $title, content: $content, anchors: $anchors, links: $links, lookup: $lookup)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ResourceCopyWith<$Res>  {
   factory $ResourceCopyWith(Resource value, $Res Function(Resource) _then) = _$ResourceCopyWithImpl;
 @useResult
 $Res call({
- String id, String title, String? content, List<ResourceLink> links, List<ResourceLink>? lookup
+ String id, String title, String? content, List<ResourceLink> anchors, List<ResourceLink> links, List<ResourceLink> lookup
 });
 
 
@@ -65,14 +65,15 @@ class _$ResourceCopyWithImpl<$Res>
 
 /// Create a copy of Resource
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? content = freezed,Object? links = null,Object? lookup = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? content = freezed,Object? anchors = null,Object? links = null,Object? lookup = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,content: freezed == content ? _self.content : content // ignore: cast_nullable_to_non_nullable
-as String?,links: null == links ? _self.links : links // ignore: cast_nullable_to_non_nullable
-as List<ResourceLink>,lookup: freezed == lookup ? _self.lookup : lookup // ignore: cast_nullable_to_non_nullable
-as List<ResourceLink>?,
+as String?,anchors: null == anchors ? _self.anchors : anchors // ignore: cast_nullable_to_non_nullable
+as List<ResourceLink>,links: null == links ? _self.links : links // ignore: cast_nullable_to_non_nullable
+as List<ResourceLink>,lookup: null == lookup ? _self.lookup : lookup // ignore: cast_nullable_to_non_nullable
+as List<ResourceLink>,
   ));
 }
 
@@ -157,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String title,  String? content,  List<ResourceLink> links,  List<ResourceLink>? lookup)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String title,  String? content,  List<ResourceLink> anchors,  List<ResourceLink> links,  List<ResourceLink> lookup)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Resource() when $default != null:
-return $default(_that.id,_that.title,_that.content,_that.links,_that.lookup);case _:
+return $default(_that.id,_that.title,_that.content,_that.anchors,_that.links,_that.lookup);case _:
   return orElse();
 
 }
@@ -178,10 +179,10 @@ return $default(_that.id,_that.title,_that.content,_that.links,_that.lookup);cas
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String title,  String? content,  List<ResourceLink> links,  List<ResourceLink>? lookup)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String title,  String? content,  List<ResourceLink> anchors,  List<ResourceLink> links,  List<ResourceLink> lookup)  $default,) {final _that = this;
 switch (_that) {
 case _Resource():
-return $default(_that.id,_that.title,_that.content,_that.links,_that.lookup);case _:
+return $default(_that.id,_that.title,_that.content,_that.anchors,_that.links,_that.lookup);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +199,10 @@ return $default(_that.id,_that.title,_that.content,_that.links,_that.lookup);cas
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String title,  String? content,  List<ResourceLink> links,  List<ResourceLink>? lookup)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String title,  String? content,  List<ResourceLink> anchors,  List<ResourceLink> links,  List<ResourceLink> lookup)?  $default,) {final _that = this;
 switch (_that) {
 case _Resource() when $default != null:
-return $default(_that.id,_that.title,_that.content,_that.links,_that.lookup);case _:
+return $default(_that.id,_that.title,_that.content,_that.anchors,_that.links,_that.lookup);case _:
   return null;
 
 }
@@ -213,12 +214,19 @@ return $default(_that.id,_that.title,_that.content,_that.links,_that.lookup);cas
 @JsonSerializable()
 
 class _Resource implements Resource {
-  const _Resource({required this.id, required this.title, required this.content, required final  List<ResourceLink> links, required final  List<ResourceLink>? lookup}): _links = links,_lookup = lookup;
+  const _Resource({required this.id, required this.title, required this.content, required final  List<ResourceLink> anchors, required final  List<ResourceLink> links, required final  List<ResourceLink> lookup}): _anchors = anchors,_links = links,_lookup = lookup;
   factory _Resource.fromJson(Map<String, dynamic> json) => _$ResourceFromJson(json);
 
 @override final  String id;
 @override final  String title;
 @override final  String? content;
+ final  List<ResourceLink> _anchors;
+@override List<ResourceLink> get anchors {
+  if (_anchors is EqualUnmodifiableListView) return _anchors;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_anchors);
+}
+
  final  List<ResourceLink> _links;
 @override List<ResourceLink> get links {
   if (_links is EqualUnmodifiableListView) return _links;
@@ -226,13 +234,11 @@ class _Resource implements Resource {
   return EqualUnmodifiableListView(_links);
 }
 
- final  List<ResourceLink>? _lookup;
-@override List<ResourceLink>? get lookup {
-  final value = _lookup;
-  if (value == null) return null;
+ final  List<ResourceLink> _lookup;
+@override List<ResourceLink> get lookup {
   if (_lookup is EqualUnmodifiableListView) return _lookup;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
+  return EqualUnmodifiableListView(_lookup);
 }
 
 
@@ -249,16 +255,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Resource&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.content, content) || other.content == content)&&const DeepCollectionEquality().equals(other._links, _links)&&const DeepCollectionEquality().equals(other._lookup, _lookup));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Resource&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.content, content) || other.content == content)&&const DeepCollectionEquality().equals(other._anchors, _anchors)&&const DeepCollectionEquality().equals(other._links, _links)&&const DeepCollectionEquality().equals(other._lookup, _lookup));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,content,const DeepCollectionEquality().hash(_links),const DeepCollectionEquality().hash(_lookup));
+int get hashCode => Object.hash(runtimeType,id,title,content,const DeepCollectionEquality().hash(_anchors),const DeepCollectionEquality().hash(_links),const DeepCollectionEquality().hash(_lookup));
 
 @override
 String toString() {
-  return 'Resource(id: $id, title: $title, content: $content, links: $links, lookup: $lookup)';
+  return 'Resource(id: $id, title: $title, content: $content, anchors: $anchors, links: $links, lookup: $lookup)';
 }
 
 
@@ -269,7 +275,7 @@ abstract mixin class _$ResourceCopyWith<$Res> implements $ResourceCopyWith<$Res>
   factory _$ResourceCopyWith(_Resource value, $Res Function(_Resource) _then) = __$ResourceCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String title, String? content, List<ResourceLink> links, List<ResourceLink>? lookup
+ String id, String title, String? content, List<ResourceLink> anchors, List<ResourceLink> links, List<ResourceLink> lookup
 });
 
 
@@ -286,14 +292,15 @@ class __$ResourceCopyWithImpl<$Res>
 
 /// Create a copy of Resource
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? content = freezed,Object? links = null,Object? lookup = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? content = freezed,Object? anchors = null,Object? links = null,Object? lookup = null,}) {
   return _then(_Resource(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,content: freezed == content ? _self.content : content // ignore: cast_nullable_to_non_nullable
-as String?,links: null == links ? _self._links : links // ignore: cast_nullable_to_non_nullable
-as List<ResourceLink>,lookup: freezed == lookup ? _self._lookup : lookup // ignore: cast_nullable_to_non_nullable
-as List<ResourceLink>?,
+as String?,anchors: null == anchors ? _self._anchors : anchors // ignore: cast_nullable_to_non_nullable
+as List<ResourceLink>,links: null == links ? _self._links : links // ignore: cast_nullable_to_non_nullable
+as List<ResourceLink>,lookup: null == lookup ? _self._lookup : lookup // ignore: cast_nullable_to_non_nullable
+as List<ResourceLink>,
   ));
 }
 
