@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_annotation/experimental/scope.dart';
 
 import 'appbar/default.dart';
 import 'appbar/search.dart';
 import 'providers.dart';
 
-@Dependencies([
-  isSearching,
-  SearchNotifier,
-  resource,
-  canSearch,
-])
 class ResourceAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const ResourceAppBar({
     super.key,

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_annotation/experimental/scope.dart';
 
 import '/search_theme.dart';
 import '../providers.dart';
 
-@Dependencies([
-  SearchNotifier,
-])
 class SearchAppBar extends ConsumerStatefulWidget implements PreferredSizeWidget {
   const SearchAppBar({
     super.key,

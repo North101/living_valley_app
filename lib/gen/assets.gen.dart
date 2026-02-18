@@ -5509,9 +5509,10 @@ class Assets {
   static const $AssetsDataGen data = $AssetsDataGen();
   static const String dataJson = 'assets/data.json';
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const String lookup = 'assets/lookup.json';
 
   /// List of all assets
-  static List<String> get values => [dataJson];
+  static List<String> get values => [dataJson, lookup];
 }
 
 class AssetGenImage {

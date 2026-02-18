@@ -57,7 +57,6 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
             resourceId: uri.path,
             title: element?.text,
             anchor: uri.fragment,
-            lookup: widget.resource.lookup,
           ),
         ),
       );
@@ -102,10 +101,12 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
             fontWeight: .w700,
           ),
           'highlight[highlight="blue"][data-theme="dark"]': .new(
-            backgroundColor: const .fromRGBO(82, 116, 154, 1),
+            backgroundColor: const .fromRGBO(82, 116, 154, 0.7),
+            color: const .fromRGBO(250, 250, 226, 1),
           ),
           'highlight[highlight="blue"][data-theme="light"]': .new(
             backgroundColor: const .fromRGBO(209, 228, 255, 1),
+            color: const .fromRGBO(250, 250, 226, 1),
           ),
           'highlight p, highlight ol, highlight ul': .new(
             margin: .only(bottom: 0),
@@ -154,7 +155,7 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
           'a': .new(
             color: DefaultTextStyle.of(context).style.color,
           ),
-          '*[color], mission, event, reward': .new(
+          '*[color], mission, event, entry, reward': .new(
             fontWeight: .w700,
           ),
           '*[color="red"][data-theme="dark"]': .new(
@@ -163,10 +164,10 @@ class _ResourceContentWidgetState extends State<ResourceContentWidget> {
           '*[color="red"][data-theme="light"]': .new(
             color: const .fromRGBO(192, 11, 11, 1),
           ),
-          '*[color="blue"][data-theme="dark"], event': .new(
+          '*[color="blue"][data-theme="dark"], event, entry': .new(
             color: const .fromRGBO(181, 204, 250, 1),
           ),
-          '*[color="blue"][data-theme="light"], event': .new(
+          '*[color="blue"][data-theme="light"], event, entry': .new(
             color: const .fromRGBO(98, 130, 193, 1),
           ),
           '*[color="green"]': .new(
@@ -293,6 +294,7 @@ final resourceContentCopy = TagExtension.inline(
   tagsToExtend: const {
     'mission',
     'event',
+    'entry',
     'reward',
   },
   builder: (context) {

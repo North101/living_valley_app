@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_annotation/experimental/scope.dart';
 
 import '../content.dart';
 import '../page.dart';
 import '../providers.dart';
 
-@Dependencies([
-  resource,
-  anchor,
-  relativeLinks,
-])
 class DefaultBody extends ConsumerWidget {
   const DefaultBody({
     super.key,
@@ -30,10 +24,6 @@ class DefaultBody extends ConsumerWidget {
   }
 }
 
-@Dependencies([
-  resource,
-  relativeLinks,
-])
 class ResourceLinkList extends ConsumerWidget {
   const ResourceLinkList({
     super.key,
@@ -41,32 +31,44 @@ class ResourceLinkList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final resource = ref.watch(resourceProvider);
-    final relativeLinks = ref.watch(relativeLinksProvider);
-    return ListView(
-      children: [
-        for (final link in relativeLinks)
-          Padding(
-            padding: const EdgeInsetsGeometry.symmetric(horizontal: 8, vertical: 4),
-            child: FilledButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ResourcePage(
-                    resourceId: link.id,
-                    title: link.title,
-                    anchor: null,
-                    lookup: resource.lookup,
+    final withinReach = ref.watch(withinReachProvider);
+    return withinReach.when(
+      loading: () => const Center(
+        child: CircularProgressIndicator(),
+      ),
+      error: (error, stackTrace) {
+        debugPrintStack(stackTrace: stackTrace);
+        return SingleChildScrollView(
+          child: Text(
+            error.toString(),
+            style: const .new(color: Colors.redAccent),
+          ),
+        );
+      },
+      data: (withinReach) => ListView(
+        children: [
+          for (final link in withinReach)
+            Padding(
+              padding: const EdgeInsetsGeometry.symmetric(horizontal: 8, vertical: 4),
+              child: FilledButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResourcePage(
+                      resourceId: link.id,
+                      title: link.title,
+                      anchor: null,
+                    ),
                   ),
                 ),
-              ),
-              child: Text(
-                link.title,
-                textAlign: TextAlign.center,
+                child: Text(
+                  link.title,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }

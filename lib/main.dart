@@ -58,7 +58,6 @@ class App extends StatelessWidget {
         resourceId: '',
         title: null,
         anchor: null,
-        lookup: [],
       ),
     );
   }

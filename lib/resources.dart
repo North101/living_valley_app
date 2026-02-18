@@ -10,8 +10,6 @@ abstract class Resource with _$Resource {
     required String title,
     required String? content,
     required List<ResourceLink> anchors,
-    required List<ResourceLink> links,
-    required List<ResourceLink> lookup,
   }) = _Resource;
 
   factory Resource.fromJson(Map<String, Object?> json) => _$ResourceFromJson(json);
@@ -22,6 +20,7 @@ abstract class ResourceLink with _$ResourceLink {
   const factory ResourceLink({
     required String id,
     required String title,
+    required List<String>? parents,
   }) = _ResourceLink;
 
   factory ResourceLink.fromJson(Map<String, Object?> json) => _$ResourceLinkFromJson(json);

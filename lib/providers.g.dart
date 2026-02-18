@@ -18,7 +18,7 @@ final class ReadResourceProvider
     with $FutureModifier<Resource>, $FutureProvider<Resource> {
   ReadResourceProvider._({
     required ReadResourceFamily super.from,
-    required (String, List<ResourceLink>) super.argument,
+    required String super.argument,
   }) : super(
          retry: null,
          name: r'readResourceProvider',
@@ -34,7 +34,7 @@ final class ReadResourceProvider
   String toString() {
     return r'readResourceProvider'
         ''
-        '$argument';
+        '($argument)';
   }
 
   @$internal
@@ -44,8 +44,8 @@ final class ReadResourceProvider
 
   @override
   FutureOr<Resource> create(Ref ref) {
-    final argument = this.argument as (String, List<ResourceLink>);
-    return readResource(ref, argument.$1, argument.$2);
+    final argument = this.argument as String;
+    return readResource(ref, argument);
   }
 
   @override
@@ -59,14 +59,10 @@ final class ReadResourceProvider
   }
 }
 
-String _$readResourceHash() => r'fd672ea76970ccde0b3705602ddf5cfee58a5af9';
+String _$readResourceHash() => r'e39fe6bcb932d11bbc2fbef29df0f59b1962da55';
 
 final class ReadResourceFamily extends $Family
-    with
-        $FunctionalFamilyOverride<
-          FutureOr<Resource>,
-          (String, List<ResourceLink>)
-        > {
+    with $FunctionalFamilyOverride<FutureOr<Resource>, String> {
   ReadResourceFamily._()
     : super(
         retry: null,
@@ -76,9 +72,50 @@ final class ReadResourceFamily extends $Family
         isAutoDispose: true,
       );
 
-  ReadResourceProvider call(String resourceId, List<ResourceLink> lookup) =>
-      ReadResourceProvider._(argument: (resourceId, lookup), from: this);
+  ReadResourceProvider call(String resourceId) =>
+      ReadResourceProvider._(argument: resourceId, from: this);
 
   @override
   String toString() => r'readResourceProvider';
 }
+
+@ProviderFor(readLookup)
+final readLookupProvider = ReadLookupProvider._();
+
+final class ReadLookupProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<Iterable<ResourceLink>>,
+          Iterable<ResourceLink>,
+          FutureOr<Iterable<ResourceLink>>
+        >
+    with
+        $FutureModifier<Iterable<ResourceLink>>,
+        $FutureProvider<Iterable<ResourceLink>> {
+  ReadLookupProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'readLookupProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$readLookupHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<Iterable<ResourceLink>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<Iterable<ResourceLink>> create(Ref ref) {
+    return readLookup(ref);
+  }
+}
+
+String _$readLookupHash() => r'20b997d09657e6e80d8c4d38c6b193e0f138165b';

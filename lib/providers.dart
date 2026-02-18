@@ -9,12 +9,17 @@ import '/gen/assets.gen.dart';
 part 'providers.g.dart';
 
 @riverpod
-Future<Resource> readResource(Ref ref, String resourceId, List<ResourceLink> lookup) async {
+Future<Resource> readResource(Ref ref, String resourceId) async {
   return await rootBundle.loadStructuredData(
     resourceId.isNotEmpty ? 'assets/data/$resourceId.json' : Assets.dataJson,
-    (data) async {
-      final resource = Resource.fromJson(jsonDecode(data));
-      return resource.lookup.isNotEmpty ? resource : resource.copyWith(lookup: lookup);
-    },
+    (data) async => Resource.fromJson(jsonDecode(data)),
+  );
+}
+
+@riverpod
+Future<Iterable<ResourceLink>> readLookup(Ref ref) async {
+  return await rootBundle.loadStructuredData(
+    Assets.lookup,
+    (data) async => (jsonDecode(data) as List).map((e) => ResourceLink.fromJson(e)),
   );
 }

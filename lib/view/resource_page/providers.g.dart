@@ -105,61 +105,6 @@ final class IsSearchingProvider extends $FunctionalProvider<bool, bool, bool>
 
 String _$isSearchingHash() => r'15c8de74fb2abf3a0df5327e90d4010460145e3a';
 
-@ProviderFor(canSearch)
-final canSearchProvider = CanSearchProvider._();
-
-final class CanSearchProvider extends $FunctionalProvider<bool, bool, bool>
-    with $Provider<bool> {
-  CanSearchProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'canSearchProvider',
-        isAutoDispose: true,
-        dependencies: <ProviderOrFamily>[
-          relativeLinksProvider,
-          lookupLinksProvider,
-        ],
-        $allTransitiveDependencies: <ProviderOrFamily>{
-          CanSearchProvider.$allTransitiveDependencies0,
-          CanSearchProvider.$allTransitiveDependencies1,
-          CanSearchProvider.$allTransitiveDependencies2,
-          CanSearchProvider.$allTransitiveDependencies3,
-        },
-      );
-
-  static final $allTransitiveDependencies0 = relativeLinksProvider;
-  static final $allTransitiveDependencies1 =
-      RelativeLinksProvider.$allTransitiveDependencies0;
-  static final $allTransitiveDependencies2 =
-      RelativeLinksProvider.$allTransitiveDependencies1;
-  static final $allTransitiveDependencies3 = lookupLinksProvider;
-
-  @override
-  String debugGetCreateSourceHash() => _$canSearchHash();
-
-  @$internal
-  @override
-  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
-      $ProviderElement(pointer);
-
-  @override
-  bool create(Ref ref) {
-    return canSearch(ref);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(bool value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<bool>(value),
-    );
-  }
-}
-
-String _$canSearchHash() => r'621cc8c3aa15ab29caa31f1962a3be0e1aa0cee6';
-
 @ProviderFor(resource)
 final resourceProvider = ResourceProvider._();
 
@@ -242,28 +187,30 @@ final class AnchorProvider
 
 String _$anchorHash() => r'7d11296c8cc2dc7afb1968275297debe1d8a4b8e';
 
-@ProviderFor(relativeLinks)
-final relativeLinksProvider = RelativeLinksProvider._();
+@ProviderFor(withinReach)
+final withinReachProvider = WithinReachProvider._();
 
-final class RelativeLinksProvider
+final class WithinReachProvider
     extends
         $FunctionalProvider<
-          Iterable<ResourceLink>,
-          Iterable<ResourceLink>,
-          Iterable<ResourceLink>
+          AsyncValue<List<ResourceLink>>,
+          List<ResourceLink>,
+          FutureOr<List<ResourceLink>>
         >
-    with $Provider<Iterable<ResourceLink>> {
-  RelativeLinksProvider._()
+    with
+        $FutureModifier<List<ResourceLink>>,
+        $FutureProvider<List<ResourceLink>> {
+  WithinReachProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'relativeLinksProvider',
+        name: r'withinReachProvider',
         isAutoDispose: true,
         dependencies: <ProviderOrFamily>[searchProvider, resourceProvider],
         $allTransitiveDependencies: <ProviderOrFamily>[
-          RelativeLinksProvider.$allTransitiveDependencies0,
-          RelativeLinksProvider.$allTransitiveDependencies1,
+          WithinReachProvider.$allTransitiveDependencies0,
+          WithinReachProvider.$allTransitiveDependencies1,
         ],
       );
 
@@ -271,79 +218,226 @@ final class RelativeLinksProvider
   static final $allTransitiveDependencies1 = resourceProvider;
 
   @override
-  String debugGetCreateSourceHash() => _$relativeLinksHash();
+  String debugGetCreateSourceHash() => _$withinReachHash();
 
   @$internal
   @override
-  $ProviderElement<Iterable<ResourceLink>> $createElement(
+  $FutureProviderElement<List<ResourceLink>> $createElement(
     $ProviderPointer pointer,
-  ) => $ProviderElement(pointer);
+  ) => $FutureProviderElement(pointer);
 
   @override
-  Iterable<ResourceLink> create(Ref ref) {
-    return relativeLinks(ref);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(Iterable<ResourceLink> value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<Iterable<ResourceLink>>(value),
-    );
+  FutureOr<List<ResourceLink>> create(Ref ref) {
+    return withinReach(ref);
   }
 }
 
-String _$relativeLinksHash() => r'6169478daf207fc3e4f5e9b505334852a3fb9e5e';
+String _$withinReachHash() => r'd86a680ef9a274754710b92bf374a42912e8df67';
 
-@ProviderFor(lookupLinks)
-final lookupLinksProvider = LookupLinksProvider._();
+@ProviderFor(alongTheWay)
+final alongTheWayProvider = AlongTheWayProvider._();
 
-final class LookupLinksProvider
+final class AlongTheWayProvider
     extends
         $FunctionalProvider<
-          Iterable<ResourceLink>,
-          Iterable<ResourceLink>,
-          Iterable<ResourceLink>
+          AsyncValue<List<ResourceLink>>,
+          List<ResourceLink>,
+          FutureOr<List<ResourceLink>>
         >
-    with $Provider<Iterable<ResourceLink>> {
-  LookupLinksProvider._()
+    with
+        $FutureModifier<List<ResourceLink>>,
+        $FutureProvider<List<ResourceLink>> {
+  AlongTheWayProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'lookupLinksProvider',
+        name: r'alongTheWayProvider',
         isAutoDispose: true,
-        dependencies: <ProviderOrFamily>[searchProvider, resourceProvider],
+        dependencies: <ProviderOrFamily>[
+          searchProvider,
+          resourceProvider,
+          withinReachProvider,
+        ],
         $allTransitiveDependencies: <ProviderOrFamily>[
-          LookupLinksProvider.$allTransitiveDependencies0,
-          LookupLinksProvider.$allTransitiveDependencies1,
+          AlongTheWayProvider.$allTransitiveDependencies0,
+          AlongTheWayProvider.$allTransitiveDependencies1,
+          AlongTheWayProvider.$allTransitiveDependencies2,
         ],
       );
 
   static final $allTransitiveDependencies0 = searchProvider;
   static final $allTransitiveDependencies1 = resourceProvider;
+  static final $allTransitiveDependencies2 = withinReachProvider;
 
   @override
-  String debugGetCreateSourceHash() => _$lookupLinksHash();
+  String debugGetCreateSourceHash() => _$alongTheWayHash();
 
   @$internal
   @override
-  $ProviderElement<Iterable<ResourceLink>> $createElement(
+  $FutureProviderElement<List<ResourceLink>> $createElement(
     $ProviderPointer pointer,
-  ) => $ProviderElement(pointer);
+  ) => $FutureProviderElement(pointer);
 
   @override
-  Iterable<ResourceLink> create(Ref ref) {
-    return lookupLinks(ref);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(Iterable<ResourceLink> value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<Iterable<ResourceLink>>(value),
-    );
+  FutureOr<List<ResourceLink>> create(Ref ref) {
+    return alongTheWay(ref);
   }
 }
 
-String _$lookupLinksHash() => r'393e2efaab13306103575da31f7128f729528476';
+String _$alongTheWayHash() => r'98d70648b145a10651d6fef503fddc802aee7b00';
+
+@ProviderFor(surroundings)
+final surroundingsProvider = SurroundingsProvider._();
+
+final class SurroundingsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<ResourceLink>>,
+          List<ResourceLink>,
+          FutureOr<List<ResourceLink>>
+        >
+    with
+        $FutureModifier<List<ResourceLink>>,
+        $FutureProvider<List<ResourceLink>> {
+  SurroundingsProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'surroundingsProvider',
+        isAutoDispose: true,
+        dependencies: <ProviderOrFamily>[
+          searchProvider,
+          resourceProvider,
+          withinReachProvider,
+          alongTheWayProvider,
+        ],
+        $allTransitiveDependencies: <ProviderOrFamily>{
+          SurroundingsProvider.$allTransitiveDependencies0,
+          SurroundingsProvider.$allTransitiveDependencies1,
+          SurroundingsProvider.$allTransitiveDependencies2,
+          SurroundingsProvider.$allTransitiveDependencies3,
+        },
+      );
+
+  static final $allTransitiveDependencies0 = searchProvider;
+  static final $allTransitiveDependencies1 = resourceProvider;
+  static final $allTransitiveDependencies2 = withinReachProvider;
+  static final $allTransitiveDependencies3 = alongTheWayProvider;
+
+  @override
+  String debugGetCreateSourceHash() => _$surroundingsHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<List<ResourceLink>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<ResourceLink>> create(Ref ref) {
+    return surroundings(ref);
+  }
+}
+
+String _$surroundingsHash() => r'3ad989820dcaa0d452b86b2bb9ef263a9531ddd2';
+
+@ProviderFor(searchLinks)
+final searchLinksProvider = SearchLinksProvider._();
+
+final class SearchLinksProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<
+            ({
+              List<ResourceLink> alongTheWay,
+              List<ResourceLink> surroundings,
+              List<ResourceLink> withinReach,
+            })
+          >,
+          ({
+            List<ResourceLink> alongTheWay,
+            List<ResourceLink> surroundings,
+            List<ResourceLink> withinReach,
+          }),
+          FutureOr<
+            ({
+              List<ResourceLink> alongTheWay,
+              List<ResourceLink> surroundings,
+              List<ResourceLink> withinReach,
+            })
+          >
+        >
+    with
+        $FutureModifier<
+          ({
+            List<ResourceLink> alongTheWay,
+            List<ResourceLink> surroundings,
+            List<ResourceLink> withinReach,
+          })
+        >,
+        $FutureProvider<
+          ({
+            List<ResourceLink> alongTheWay,
+            List<ResourceLink> surroundings,
+            List<ResourceLink> withinReach,
+          })
+        > {
+  SearchLinksProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'searchLinksProvider',
+        isAutoDispose: true,
+        dependencies: <ProviderOrFamily>[
+          withinReachProvider,
+          alongTheWayProvider,
+          surroundingsProvider,
+        ],
+        $allTransitiveDependencies: <ProviderOrFamily>{
+          SearchLinksProvider.$allTransitiveDependencies0,
+          SearchLinksProvider.$allTransitiveDependencies1,
+          SearchLinksProvider.$allTransitiveDependencies2,
+          SearchLinksProvider.$allTransitiveDependencies3,
+          SearchLinksProvider.$allTransitiveDependencies4,
+        },
+      );
+
+  static final $allTransitiveDependencies0 = withinReachProvider;
+  static final $allTransitiveDependencies1 =
+      WithinReachProvider.$allTransitiveDependencies0;
+  static final $allTransitiveDependencies2 =
+      WithinReachProvider.$allTransitiveDependencies1;
+  static final $allTransitiveDependencies3 = alongTheWayProvider;
+  static final $allTransitiveDependencies4 = surroundingsProvider;
+
+  @override
+  String debugGetCreateSourceHash() => _$searchLinksHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<
+    ({
+      List<ResourceLink> alongTheWay,
+      List<ResourceLink> surroundings,
+      List<ResourceLink> withinReach,
+    })
+  >
+  $createElement($ProviderPointer pointer) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<
+    ({
+      List<ResourceLink> alongTheWay,
+      List<ResourceLink> surroundings,
+      List<ResourceLink> withinReach,
+    })
+  >
+  create(Ref ref) {
+    return searchLinks(ref);
+  }
+}
+
+String _$searchLinksHash() => r'3e94d590bbe78c2deeec1b3b3c057df00e3e8456';

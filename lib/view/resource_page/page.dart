@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '/constants.dart';
 import '/providers.dart';
-import '/resources.dart';
 import 'appbar.dart';
 import 'body.dart';
 import 'providers.dart';
@@ -13,19 +12,17 @@ class ResourcePage extends ConsumerWidget {
     required this.resourceId,
     required this.title,
     required this.anchor,
-    required this.lookup,
     super.key,
   });
 
   final String resourceId;
   final String? title;
   final String? anchor;
-  final List<ResourceLink> lookup;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final title = this.title;
-    final resource = ref.watch(readResourceProvider(resourceId, lookup));
+    final resource = ref.watch(readResourceProvider(resourceId));
     return resource.when(
       loading: () => Scaffold(
         appBar: AppBar(

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "uk.co.north101.android.living_valley_app.living_valley_app"
+    namespace = "uk.co.north101.living_valley_app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "uk.co.north101.android.living_valley_app.living_valley_app"
+        applicationId = "uk.co.north101.living_valley_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

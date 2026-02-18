@@ -8,7 +8,7 @@
 PRODUCT_NAME = The Living Valley
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = uk.co.north101.osx.living_valley_app
+PRODUCT_BUNDLE_IDENTIFIER = uk.co.north101.living_valley_app
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2025 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2026 uk.co.north101.living_valley_app. All rights reserved.
