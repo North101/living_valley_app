@@ -17,9 +17,22 @@ Future<Resource> readResource(Ref ref, String resourceId) async {
 }
 
 @riverpod
-Future<Iterable<ResourceLink>> readLookup(Ref ref) async {
+Future<List<ResourceLinkSearch>> readLookup(Ref ref) async {
   return await rootBundle.loadStructuredData(
     Assets.lookup,
-    (data) async => (jsonDecode(data) as List).map((e) => ResourceLink.fromJson(e)),
+    (data) async => (jsonDecode(data) as List)
+        .map((e) => ResourceLinkLookup.fromJson(e))
+        .indexed
+        .map(
+          (e) => ResourceLinkSearch(
+            index: e.$1,
+            id: e.$2.id,
+            title: e.$2.title,
+            parents: e.$2.parents,
+            parts: e.$2.id.substring(1).split('/'),
+            normalizedTitle: e.$2.title.toLowerCase(),
+          ),
+        )
+        .toList(),
   );
 }

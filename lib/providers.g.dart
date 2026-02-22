@@ -85,13 +85,13 @@ final readLookupProvider = ReadLookupProvider._();
 final class ReadLookupProvider
     extends
         $FunctionalProvider<
-          AsyncValue<Iterable<ResourceLink>>,
-          Iterable<ResourceLink>,
-          FutureOr<Iterable<ResourceLink>>
+          AsyncValue<List<ResourceLinkSearch>>,
+          List<ResourceLinkSearch>,
+          FutureOr<List<ResourceLinkSearch>>
         >
     with
-        $FutureModifier<Iterable<ResourceLink>>,
-        $FutureProvider<Iterable<ResourceLink>> {
+        $FutureModifier<List<ResourceLinkSearch>>,
+        $FutureProvider<List<ResourceLinkSearch>> {
   ReadLookupProvider._()
     : super(
         from: null,
@@ -108,14 +108,14 @@ final class ReadLookupProvider
 
   @$internal
   @override
-  $FutureProviderElement<Iterable<ResourceLink>> $createElement(
+  $FutureProviderElement<List<ResourceLinkSearch>> $createElement(
     $ProviderPointer pointer,
   ) => $FutureProviderElement(pointer);
 
   @override
-  FutureOr<Iterable<ResourceLink>> create(Ref ref) {
+  FutureOr<List<ResourceLinkSearch>> create(Ref ref) {
     return readLookup(ref);
   }
 }
 
-String _$readLookupHash() => r'20b997d09657e6e80d8c4d38c6b193e0f138165b';
+String _$readLookupHash() => r'c3f7f4e87d4104af32779f7787a1850d176f4130';

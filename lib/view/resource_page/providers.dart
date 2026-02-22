@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '/providers.dart';
@@ -10,7 +12,7 @@ class SearchNotifier extends _$SearchNotifier {
   @override
   String? build() => null;
 
-  String? get() => state;
+  String? get get => state;
 
   void set(String value) {
     state = value;
@@ -26,109 +28,166 @@ bool isSearching(Ref ref) {
   return ref.watch(searchProvider) != null;
 }
 
+@Riverpod(dependencies: [SearchNotifier])
+String normalizedSearch(Ref ref) {
+  final search = ref.watch(searchProvider);
+  return search?.toLowerCase().trim() ?? '';
+}
+
 @Riverpod(dependencies: [])
 Resource resource(Ref ref) => throw UnimplementedError();
 
-@Riverpod(dependencies: [])
-String? anchor(Ref ref) => throw UnimplementedError();
-
-bool matchesSearch(ResourceLink link, String search) {
-  return search.isEmpty || link.title.toLowerCase().contains(search);
+@Riverpod(
+  dependencies: [
+    resource,
+  ],
+)
+List<String> resourceParts(Ref ref) {
+  final resourceId = ref.watch(resourceProvider).id;
+  return resourceId.isNotEmpty ? resourceId.substring(1).split('/') : const [];
 }
 
 @Riverpod(
   dependencies: [
-    SearchNotifier,
-    resource,
+    normalizedSearch,
+    readLookup,
+    resourceParts,
   ],
 )
-Future<List<ResourceLink>> withinReach(Ref ref) async {
-  final search = (ref.watch(searchProvider) ?? '').toLowerCase();
-  final resource = ref.watch(resourceProvider);
+Future<Iterable<ResourceLinkSearch>> listFilteredLookup(Ref ref) async {
+  final resourceParts = ref.watch(resourcePartsProvider);
+  final search = ref.watch(normalizedSearchProvider);
   final lookup = await ref.watch(readLookupProvider.future);
 
+  return lookup //
+      .where((e) => search.isEmpty || e.normalizedTitle.contains(search))
+      .sorted((a, b) {
+        final aCommon = commonPrefixLength(resourceParts, a.parts);
+        final bCommon = commonPrefixLength(resourceParts, b.parts);
+
+        final bPriority = sortPriority(resourceParts, b.parts, bCommon).priority;
+        final aPriority = sortPriority(resourceParts, a.parts, aCommon).priority;
+        if (aPriority != bPriority) {
+          return aPriority.compareTo(bPriority);
+        }
+
+        final aDistance = (resourceParts.length - aCommon).abs();
+        final bDistance = (resourceParts.length - bCommon).abs();
+        if (aDistance != bDistance) {
+          return aDistance.compareTo(bDistance);
+        }
+
+        final aSearch = a.normalizedTitle.startsWith(search);
+        final bSearch = b.normalizedTitle.startsWith(search);
+        if (search.isNotEmpty && aSearch != bSearch) {
+          return aSearch ? -1 : 1;
+        }
+        return a.index.compareTo(b.index);
+      });
+}
+
+@Riverpod(
+  dependencies: [
+    listFilteredLookup,
+    normalizedSearch,
+    resourceParts,
+  ],
+)
+Future<List<ResourceLinkSearch>> withinReach(Ref ref) async {
+  final resourceParts = ref.watch(resourcePartsProvider);
+  final search = ref.watch(normalizedSearchProvider);
+  final lookup = await ref.watch(listFilteredLookupProvider.future);
+
   if (search.isEmpty) {
-    if (resource.id.isEmpty) {
-      return lookup //
-          .where((e) => !e.id.contains('/'))
-          .toList();
-    }
     return lookup //
-        .where((e) => e.id.startsWith('${resource.id}/'))
-        .where((e) => !e.id.removePrefix('${resource.id}/').contains('/'))
+        .where((e) {
+          final common = commonPrefixLength(resourceParts, e.parts);
+          final priority = sortPriority(resourceParts, e.parts, common);
+          return priority == .child;
+        })
         .toList();
   }
   return lookup //
-      .where((e) => e.id.startsWith('${resource.id}/'))
-      .where((e) => matchesSearch(e, search))
+      .where((e) {
+        final common = commonPrefixLength(resourceParts, e.parts);
+        final priority = sortPriority(resourceParts, e.parts, common);
+        return priority == .child || priority == .desendent;
+      })
       .toList();
 }
 
 @Riverpod(
   dependencies: [
-    SearchNotifier,
-    resource,
+    listFilteredLookup,
+    normalizedSearch,
+    resourceParts,
     withinReach,
   ],
 )
-Future<List<ResourceLink>> alongTheWay(Ref ref) async {
-  final search = (ref.watch(searchProvider) ?? '').toLowerCase();
-  final resource = ref.watch(resourceProvider);
-  final lookup = await ref.watch(readLookupProvider.future);
+Future<List<ResourceLinkSearch>> alongTheWay(Ref ref) async {
+  final resourceParentParts = ref.watch(
+    resourcePartsProvider.select((e) => e.isNotEmpty ? e.take(e.length - 1).toList() : e),
+  );
+  final search = ref.watch(normalizedSearchProvider);
+  final lookup = await ref.watch(listFilteredLookupProvider.future);
+
   final withinReach = await ref.watch(withinReachProvider.future);
-  final resourceParentId = resource.id.contains('/')
-      ? resource.id.substring(0, resource.id.lastIndexOf('/'))
-      : resource.id;
   if (search.isEmpty) {
-    return lookup
+    return lookup //
         .where((e) => !withinReach.contains(e))
-        .where((e) => e.id.startsWith('$resourceParentId/'))
-        .where((e) => !e.id.removePrefix('$resourceParentId/').contains('/'))
+        .where((e) {
+          final common = commonPrefixLength(resourceParentParts, e.parts);
+          final priority = sortPriority(resourceParentParts, e.parts, common);
+          return priority == .child;
+        })
         .toList();
   }
-  return lookup
+  return lookup //
       .where((e) => !withinReach.contains(e))
-      .where((e) => e.id.startsWith('$resourceParentId/'))
-      .where((e) => matchesSearch(e, search))
+      .where((e) {
+        final common = commonPrefixLength(resourceParentParts, e.parts);
+        final priority = sortPriority(resourceParentParts, e.parts, common);
+        return priority == .child || priority == .desendent;
+      })
       .toList();
 }
 
 @Riverpod(
   dependencies: [
-    SearchNotifier,
+    alongTheWay,
+    listFilteredLookup,
+    normalizedSearch,
     resource,
     withinReach,
-    alongTheWay,
   ],
 )
-Future<List<ResourceLink>> surroundings(Ref ref) async {
-  final search = (ref.watch(searchProvider) ?? '').toLowerCase();
+Future<List<ResourceLinkSearch>> surroundings(Ref ref) async {
+  final search = ref.watch(normalizedSearchProvider);
   if (search.isEmpty) {
     return const [];
   }
 
-  final lookup = await ref.watch(readLookupProvider.future);
+  final lookup = await ref.watch(listFilteredLookupProvider.future);
   final withinReach = await ref.watch(withinReachProvider.future);
   final alongTheWay = await ref.watch(alongTheWayProvider.future);
-  return lookup
+  return lookup //
       .where((e) => !withinReach.contains(e))
       .where((e) => !alongTheWay.contains(e))
-      .where((e) => matchesSearch(e, search))
       .toList();
 }
 
 @Riverpod(
   dependencies: [
-    withinReach,
     alongTheWay,
     surroundings,
+    withinReach,
   ],
 )
 Future<
   ({
-    List<ResourceLink> withinReach,
-    List<ResourceLink> alongTheWay,
-    List<ResourceLink> surroundings,
+    Iterable<ResourceLinkSearch> withinReach,
+    Iterable<ResourceLinkSearch> alongTheWay,
+    Iterable<ResourceLinkSearch> surroundings,
   })
 >
 searchLinks(Ref ref) async {
@@ -142,6 +201,45 @@ searchLinks(Ref ref) async {
   );
 }
 
-extension StringPrefix on String {
-  String removePrefix(String prefix) => startsWith(prefix) ? substring(prefix.length) : this;
+int commonPrefixLength(List<String> x, List<String> y) {
+  int i;
+  for (i = 0; i < x.length && i < y.length; i++) {
+    if (x[i] != y[i]) return i;
+  }
+  return i;
 }
+
+bool isChild(List<String> currentParts, List<String> parts, int common) =>
+    common == currentParts.length && parts.length > currentParts.length;
+
+bool isDirectChild(List<String> currentParts, List<String> parts) => parts.length == currentParts.length + 1;
+
+bool isAncestor(List<String> currentParts, List<String> parts, int common) =>
+    common == parts.length && parts.length < currentParts.length;
+
+enum Priority {
+  desendent(0),
+  child(0),
+  parent(1),
+  ancestor(2),
+  other(3)
+  ;
+
+  const Priority(this.priority);
+
+  final int priority;
+}
+
+Priority sortPriority(List<String> currentParts, List<String> parts, int common) {
+  if (isChild(currentParts, parts, common)) {
+    return isDirectChild(currentParts, parts) ? .child : .desendent;
+  } else if (isAncestor(currentParts, parts, common)) {
+    return .ancestor;
+  } else if (common == 0) {
+    return .other;
+  }
+  return .parent;
+}
+
+@Riverpod(dependencies: [])
+String? anchor(Ref ref) => throw UnimplementedError();

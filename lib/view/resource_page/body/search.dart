@@ -67,13 +67,13 @@ class ResourceLinkTile extends ConsumerWidget {
     super.key,
   });
 
-  final ResourceLink link;
+  final ResourceLinkSearch link;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
       title: Text(link.title),
-      subtitle: Text(link.parents?.join(' / ') ?? ''),
+      subtitle: Text(link.parents),
       onTap: () async {
         ref.read(searchProvider.notifier).clear();
 
